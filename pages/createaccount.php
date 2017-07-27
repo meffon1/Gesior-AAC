@@ -460,7 +460,7 @@ if(!$logged) {
 																</tr>
 																<tr>
 																	<td><input type="checkbox" name="agreeagreements" value="true"  onClick="if(this.checked == true) {  document.getElementById(\'agreeagreements_errormessage\').innerHTML = \'\';} else {  document.getElementById(\'agreeagreements_errormessage\').innerHTML = \'You have to agree to the ' . $config['server']['serverName'] . ' Rules in order to create an account!\';}"' . ($_POST['step'] == 'docreate' && !isset($e['rules']) ? ' checked="checked"' : '') . '/>
-																		I agree to the <a href="?subtopic=malverarules" target="_blank" >' . $config['server']['serverName'] . ' Rules</a>.</td>
+																		I agree to the <a href="?subtopic=tibiarules" target="_blank" >' . $config['server']['serverName'] . ' Rules</a>.</td>
 																</tr>
 																<tr>
 																	<td><span id="agreeagreements_errormessage" class="FormFieldError">' . (isset($e['rules']) ? $e['rules'] : '') . '</span></td>
