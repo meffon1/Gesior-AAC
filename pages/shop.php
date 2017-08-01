@@ -43,7 +43,7 @@
 				</tbody>
 			</table>
 		</center>
-		<p>Abaixo você vai ver alguns serviços que oferecemos em nosso shop online, também itens, addons e montarias. Esse shop é simplesmente para você estar por dentro de novas ofertas que aqui serão mostradas, pois para realizar a compra você deverá ir até a página <a href="?subtopic=accountmanagement&action=manage#Products+Available">principal de sua conta</a>.</p>';
+		<p>Below you will see some services we offer in our online store, also items, addons and mounts. This shop is simply for you to be inside of the new offers that are being shown because to make a purchase you are a <a href="?subtopic=accountmanagement&action=manage#Products+Available">page of your account</a>.</p>';
 
 if(!isset($_REQUEST['ServiceCategoryID']) || $_REQUEST['ServiceCategoryID'] == "")
 	$serviceCategoryId = 2;
@@ -231,7 +231,7 @@ $main_content .= '
 												<tr>
 													<td style="text-align: center;" align="center" >
 														<div style="max-height: 500px; min-height: 100px; overflow-y: auto;">
-															<p>Faça uma <a href="?subtopic=accountmanagement&action=donate">doação para nosso servidor</a>, para que assim possamos sempre estar trazendo novos conteúdos e mantendo o melhor atendimento possível para você jogador. Sinta-se a vontade em doar, esteja certo de que faremos por merecer sua doação.</p>
+															<p>Make a <a href="?subtopic=accountmanagement&action=donate">donation to the server</a>, So that we can always be bringing new content and maintaining the best possible service for you player. Feel free to donate, be sure that we will make your donation worthy.</p>
 														</div>
 													</td>
 												</tr>
@@ -253,4 +253,3 @@ $main_content .= '
 			</tr>
 		</table>
 	</div>';
-	$main_content .= '<p>Está confuso, e não sabe como comprar um serviço ? Temos um tutorial pra você explicando com detalhes como você pode <a href="?subtopic=serverinfo&action=tutorialshop">comprar um serviço</a> de nosso shop, também possuimos um tutorial <a href="?subtopic=serverinfo&action=tutorialdonate">completo de como realizar uma doação</a> em nosso servidor.</p>';

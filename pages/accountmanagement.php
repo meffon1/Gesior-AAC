@@ -955,7 +955,7 @@ else
 				</tr>
 				<br/>
 				<br/>';
-		/*
+		
 		$main_content .= '
 			<a name="Loyalty+Highscore+Character" ></a>
 				<div class="TopButtonContainer" >
@@ -1036,7 +1036,7 @@ else
 			</div>
 				<br>
 				<br>';
-			*/
+			
 		
 		$main_content .= '
 			<a name="Donates" ></a>

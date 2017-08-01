@@ -10,7 +10,7 @@ $main_content .= '
 				<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
 				<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 				<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span>
-				<div class="Text">Informações</div>
+				<div class="Text">Information</div>
 				<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span> 
 				<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 				<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
@@ -36,7 +36,7 @@ $main_content .= '
 														<td style="width:90%;" >'.(($config['status']['serverStatus_online'] == 1) ? 'Online' : 'Offline').'</td>
 													</tr>
 													<tr bgcolor="'.$config['site']['lightborder'].'">
-														<td class="LabelV" >Players no Cast</td>
+														<td class="LabelV" >Players in Cast</td>
 														<td style="width:90%;" >'.count($getCasts).'</td>
 													</tr>
 												</table>
@@ -57,9 +57,11 @@ $main_content .= '
 			</tbody>
 		</table>
 	</div>
-	<p>Atualmente nosso server conta com um sistema unico de Cast.</p>
-	<p>Você poderá assistir nossos jogadores apenas clicando para entrar na conta sem inserir a conta, muito menos a senha. Uma lista dos jogadores que estão transmitindo será mostrada, então escolha um e clique para entrar. Depois de entrar no cast do jogador, poderá interagir com ele utilizando o Spectator Chat, um chat onde você poderá falar com o jogador e com outros espectadores.</p>
-	<p>Se você é um jogador e quer transmitir seu jogo, entre em seu personagem e utilize o comando <strong>!cast</strong>, se quiser colocar uma senha em seu cast digite o comando <strong>!cast senha</strong>, a palavra "senha" será a sua senha do cast.</p>';
+	
+	
+	<p>Currently our server has a unique Cast system.</p>
+	<p>You can watch our players just by clicking to enter the account without entering the account, let alone the password. A list of the players that are broadcasting will be shown, so choose one and click to enter. After entering the cast of the player, you can interact with him using Spectator Chat, a chat where you can talk to the player and other spectators.</p>
+	<p>If you are a player and want to broadcast your game, enter your character and use the command <strong>!cast</strong>, If you want to put a password in your cast type the command <strong>!cast password</strong>, The word "password" will be your cast password.</p>';
 	
 $main_content .= '
 	<div class="TableContainer">
@@ -69,7 +71,7 @@ $main_content .= '
 				<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
 				<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 				<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span>
-				<div class="Text">Player no Cast</div>
+				<div class="Text">Players in Cast</div>
 				<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span> 
 				<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 				<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
@@ -92,8 +94,8 @@ $main_content .= '
 												<table class="TableContent" width="100%">
 													<tr bgcolor="'.$config['site']['darkborder'].'">
 														<td class="LabelV"  width="4%">Outfit</td>
-														<td class="LabelV" width="90%">Nome</td>
-														<td class="LabelV" width="3%" >Espectadores</td>
+														<td class="LabelV" width="90%">Name</td>
+														<td class="LabelV" width="3%" >Spectators</td>
 														<td class="LabelV" width="3%"></td>
 													</tr>';
 											$cast_number = 0;
@@ -115,7 +117,7 @@ $main_content .= '
 										else {
 												$main_content .= '
 													<tr>
-														<td colspan="6" bgcolor="'.$config['site']['lightborder'].'">Nenhum cast no momento.</td>
+														<td colspan="6" bgcolor="'.$config['site']['lightborder'].'">No cast at the moment.</td>
 													</tr>';
 										}
 											$main_content .= '

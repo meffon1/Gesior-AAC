@@ -160,7 +160,7 @@ $main_content .= '<form action="index.php?subtopic=newsarchive" method="post">
 if(empty($news))
 $main_content .= '
 <TABLE BORDER="0" CELLSPACING="0" CELLPADDING="7" WIDTH="100%">
-<TR BGCOLOR='.$config['site']['darkborder'].'><TD align="center"><i>Sem notícias.</i></TD></TR>
+<TR BGCOLOR='.$config['site']['darkborder'].'><TD align="center">No news.</TD></TR>
 </TABLE>';}
 if ($action == "tickets"){
 $main_content .='
