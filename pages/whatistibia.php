@@ -15,7 +15,7 @@ Acting as knights, paladins, sorcerers or druids, players are faced with the cha
 
 ' . htmlspecialchars($config['server']['serverName']) . ' can be played free of charge as a matter of principle. However, your account can be upgraded anytime to a <A HREF="/?subtopic=premiumfeatures">premium account</A>. Advantages of premium accounts include the access to special game areas and items as well as further special features relating to the game.<BR><BR>
 
-A great helper team consisting of <A HREF="http://malvera.online/index.php?subtopic=aboutcipsoft">tutors</A> answers questions from unexperienced players in the help channel.<BR><BR>
+A great helper team consisting of <A HREF="?subtopic=aboutcipsoft">tutors</A> answers questions from unexperienced players in the help channel.<BR><BR>
 
 Detailed information about the game can be found in our manual.
 ';
