@@ -285,7 +285,7 @@ else
 																			</span>
 																			<small>
 																				<br>The server is configured to free premium account , good game !<br>
-																				(Balance of premium points: '.(($account_logged->getPremiumPoints() > 0) ? '<font class="green">'.$account_logged->getPremiumPoints().'</font>' : '<font class="red">0</font>').' points)
+																				(Balance of tibia coins: '.(($account_logged->getPremiumPoints() > 0) ? '<font class="green">'.$account_logged->getPremiumPoints().'</font>' : '<font class="red">0</font>').' points)
 																			</small>
 																		</td>';
 																} else {
@@ -850,24 +850,23 @@ else
 													} else {
 														$main_content .= '
 															<td>'.$account_status.'<br>
-																<small>(Premium Time expires at Dec&#160;20&#160;2014,&#160;21:50:32&#160;CET)</small>
 															</td>';
 													}
 													$main_content .= '
 														</tr>
 														<tr style="background-color:#F1E0C6;" >
-															<td class="LabelV" >Premium Points:</td>
-															<td>'.$account_logged->getPremiumPoints().' premium points<br>';
+															<td class="LabelV" >Tibia Coins:</td>
+															<td>'.$account_logged->getPremiumPoints().' tibia coins<br>';
 															$accname = $account_logged->getName();
 														$sql_points = "SELECT * FROM `z_shop_donates` WHERE `account_name` = '$accname' AND `status` = 'received' ORDER BY `date` DESC LIMIT 1";
 														$last_points_bought = $SQL->query($sql_points)->fetch();
 														if($SQL->query($sql_points)->fetchColumn() > 0) {
 															$getServiceInfo = $SQL->query("SELECT `count` FROM `z_shop_offer` WHERE `id` = '".$last_points_bought['service_id']."'")->fetch();
 															$main_content .= '
-																<small>(Your last purchase of premium points was on '.date("M d Y",$last_points_bought['date']).'. You bought '.$last_points_bought['points'].' premium points.)</small>';
+																<small>(Your last purchase of tibia coins was on '.date("M d Y",$last_points_bought['date']).'. You bought '.$last_points_bought['points'].' premium points.)</small>';
 														} else
 															$main_content .= '
-																<small>(You have not bought premium points yet. <a href="?subtopic=accountmanagement&action=donate" title="Buy now!">Buy now!</a>)</small>';
+																<small>(You have not bought tibia coins yet. <a href="?subtopic=accountmanagement&action=donate" title="Buy now!">Buy now!</a>)</small>';
 														$main_content .= '
 															</td>
 														</tr>';
@@ -1537,8 +1536,7 @@ else
 														</tr>';												
 												}													
 												
-												$main_content .= '
-												</table>
+												$main_content .= '		
 													</table>
 												</div>
 											</div>
