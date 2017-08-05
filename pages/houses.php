@@ -37,7 +37,7 @@ $main_content .= '<input type="radio" name="order" value="size" id="radio_s1" ' 
 
 
 $main_content .= '</td></tr>';
-$main_content .= '<tr><td colspan="3" style="text-align:right"><input type="image" name="Submit" alt="Submit" src="'.$layout_name.'/images/buttons/sbutton_submit.gif"></td></tr></table></form>';
+$main_content .= '<tr><td colspan="3" style="text-align:right"><input type="image" name="Submit" alt="Submit" src="'.$layout_name.'/images/global/buttons/sbutton_submit.gif"></td></tr></table></form>';
 
 if(isset($_REQUEST['town']) && isset($_REQUEST['owner']) && isset($_REQUEST['order']))
 {
