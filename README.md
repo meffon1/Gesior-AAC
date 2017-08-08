@@ -14,5 +14,5 @@ Strong hug.
 
 ----------------------------------------------------------------
 
-Migrations: https://pastebin.com/KMSitwkh
+Migrations: https://pastebin.com/KMSitwkh</p>
 Migrations by: Leonardo Pereira
