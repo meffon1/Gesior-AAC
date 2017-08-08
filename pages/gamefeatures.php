@@ -58,8 +58,16 @@ Tibia is a free fantasy massively multiplayer online role-playing game (MMORPG).
 <TR><TD valign=top><IMG SRC="'.$layout_name.'/images/global/content\bullet.gif" width=12 height=15 border=0 align=top></TR>
 <TD><B>Premium Features Available</B><BR>Would you like to take Tibia even further? Make your account Premium to get cool additional features such as rentable houses, brand new spells and areas, and many more!</TD></TR><p>
 
-<CENTER><form action="?subtopic=createaccount" method="post" style="padding:0px;margin:0px;" ><div class="BigButton" style="background-image:url(http://i.imgur.com/64XwUd0.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://i.imgur.com/rs22bYn.gif);" ></div><input class="ButtonText" type="image" name="Create Account" alt="Create Account" src="'.$layout_name.'/images/global/buttons\_sbutton_createaccount.gif" >
-</div></div></form><CENTER>
+<center>
+			<form action="/?subtopic=createaccount" method="post" style="padding:0px;margin:0px;">
+				<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton.gif)" >
+					<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" >
+						<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_over.gif);" ></div>
+						<input class="ButtonText" type="image" name="I agree" alt="I agree" src="'.$layout_name.'/images/global/buttons/_sbutton_createaccount.gif" >
+					</div>
+				</div>
+			</form>
+		</center>
 
 ';
 ?>
