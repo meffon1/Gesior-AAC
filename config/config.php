@@ -1,6 +1,7 @@
 <?PHP
 // ----Config Shop----
 $outfits_list = array();
+
 $loyalty_title = array(
 50 => 'Scout',
 100 => 'Sentinel', 
@@ -11,20 +12,18 @@ $loyalty_title = array(
 3000 => 'Keeper', 
 4000 => 'Guardian', 
 5000 => 'Sage');
+
 $config['shop']['newitemdays'] = 1; #days to item be new in shop
 
-# Pagseguro configs
+# Pagseguro and PayPal configs
 $config['pagseguro']['testing'] = false; # if pagseguro testing mode
 $config['pagseguro']['tokentest'] = "";
-
 $config['pagseguro']['email'] = ""; #pagseguro e-mail
 $config['pagseguro']['token'] = ""; #pagseguro token
-
-# PayPal configs
 $config['paypal']['email'] = "";
 
 # Social Networks
-$config['social']['status'] = true; # set false to disable network box
+$config['social']['status'] = true;
 $config['social']['facebook'] = "https://www.facebook.com/tibia";
 
 # PAGE: characters.php
@@ -38,30 +37,29 @@ $config['site']['quests'] = array(
 "Wrath Of The Emperor" => 0);
 
 # time in days to show the former names
-$config['site']['formerNames'] = 10; #days to hide former name
+$config['site']['formerNames'] = 10;
 $config['site']['formerNames_amount'] = 10;
 
 # Account Maker Config
 $config['site']['serverPath'] = "G:\Forgotten Server/";
 $config['site']['useServerConfigCache'] = false;
 $towns_list = array(
-1 => 'Venore', 
-2 => 'Thais', 
-3 => 'Kazordoon', 
-4 => 'Carlin', 
-5 => 'Ab\'Dendriel', 
-6 => 'Rookgard', 
-7 => 'Liberty Bay', 
-8 => 'Port Hope', 
-9 => 'Ankrahmun', 
-10 => 'Darashia', 
-11 => 'Edron', 
+1 => 'Ab\'Dendriel', 
+2 => 'Ankrahmun', 
+3 => 'Carlin', 
+4 => 'Darashia', 
+5 => 'Edron', 
+6 => 'Farmine', 
+7 => 'Gray Beach', 
+8 => 'Kazordoon', 
+9 => ' Liberty Bay', 
+10 => 'Port Hope', 
+11 => 'Rathleton', 
 12 => 'Svargrond', 
-13 => 'Yalahar', 
-14 => 'Farmine', 
-28 => 'Gray Beach', 
-29 => 'Roshamuul', 
-30 => 'Rathleton');
+13 => 'Thais', 
+14 => 'Venore', 
+15 => 'Yalahar',
+);
 
 # Create Account Options
 $config['site']['one_email'] = false;
@@ -84,7 +82,7 @@ $config['site']['smtp_host'] = "ssl://smtp.gmail.com";
 $config['site']['smtp_port'] = 465;
 $config['site']['smtp_auth'] = true;
 $config['site']['smtp_user'] = "@gmail.com";
-$config['site']['smtp_pass'] = "lipe0401";
+$config['site']['smtp_pass'] = "";
 
 # PAGE: accountmanagement.php
 $config['site']['send_mail_when_change_password'] = true;
