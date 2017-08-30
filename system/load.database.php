@@ -35,5 +35,13 @@ if(Website::getServerConfig()->isSetKey(SERVERCONFIG_SQL_PASS))
 else
 	new Error_Critic('#E-7', 'There is no key <b>' . SERVERCONFIG_SQL_PASS . '</b> in server config file.');
 
-Website::setPasswordsEncryption("sha1");
+
+Website::setPasswordsEncryption(Website::getServerConfig()->getValue('passwordType'));
+
+Website::PDOInit(Website::getServerConfig()->getValue(SERVERCONFIG_SQL_HOST),
+                    Website::getServerConfig()->getValue(SERVERCONFIG_SQL_PORT),
+                    Website::getServerConfig()->getValue(SERVERCONFIG_SQL_DATABASE),
+                    Website::getServerConfig()->getValue(SERVERCONFIG_SQL_USER),
+                    Website::getServerConfig()->getValue(SERVERCONFIG_SQL_PASS));
 $SQL = Website::getDBHandle();
+$SQLPDO = Website::getPDOConnection();

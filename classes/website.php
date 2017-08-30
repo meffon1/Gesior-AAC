@@ -9,6 +9,7 @@ class Website extends WebsiteErrors
 	public static $vocations;
 	public static $groups;
 	public static $SQL;
+	public static $PDOConn;
 	public static $passwordsEncryptions = array(
 	'plain' => 'plain',
 	'md5' => 'md5',
@@ -22,7 +23,7 @@ class Website extends WebsiteErrors
 	public static function setDatabaseDriver($value)
 	{
 		self::$SQL = null;
-
+        self::$PDOConn = null;
 		switch($value)
 		{
 			case Database::DB_MYSQL:
@@ -40,7 +41,21 @@ class Website extends WebsiteErrors
 			return self::$SQL;
 		else
 			new Error_Critic('#C-9', 'ERROR: <b>#C-9</b> : Class::Website - getDBHandle(), database driver not set.');
-	}	
+	}
+
+	public static function PDOInit($host, $port, $dbname, $dbuser, $dbpasswd){
+        if(!isset(self::$PDOConn)){
+            self::$PDOConn = new PDO('mysql:host='.$host.';port='.$port.';dbname='.$dbname.'', $dbuser, $dbpasswd);
+            self::$PDOConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+    }
+
+	public static function getPDOConnection(){
+        if(isset(self::$PDOConn))
+            return self::$PDOConn;
+        else
+            new Error_Critic('#C-10', 'Error: PDO connection not set.');
+    }
 
 	public static function loadWebsiteConfig()
 	{
@@ -226,31 +241,5 @@ class Website extends WebsiteErrors
 			$lastCountryCode = $countryCode;
 		}
 		return $lastCountryCode;
-	}
-	
-	public static function newSessionKey() {
-		srand(time());
-		$lenght = 0;
-		$sessionKey = "";
-		while ($lenght < 30) {
-			$char = substr("0123456789abcdfghjkmnpqrstvwxyzABCDEFGHIJKLMNOPQRESTUVWXYZ", rand(0, strlen("0123456789abcdfghjkmnpqrstvwxyzABCDEFGHIJKLMNOPQRESTUVWXYZ") - 1), 1);
-			if (!strstr($sessionKey, $char)) {
-				$sessionKey .= $char;
-				$lenght++;
-			}
-		}
-		return $sessionKey;
-	}
-	
-	public static function generateSessionKey() {
-		global $SQL;
-		while (true) {
-			$sessionKey = Website::newSessionKey();
-			$result = $SQL->query('SELECT `id` FROM `accounts` WHERE `authToken` LIKE "' . $sessionKey . '"')->fetch();
-			if(empty($result)) {
-				break;
-			}
-		}
-		return $sessionKey;
 	}
 }
