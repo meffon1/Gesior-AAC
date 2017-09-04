@@ -10,6 +10,8 @@ define('INITIALIZED', true);
 // if not defined before, set 'false' to load all normal
 if(!defined('ONLY_PAGE'))
 	define('ONLY_PAGE', false);
+
+define(AJAXREQUEST,false);
 	
 // check if site is disabled/requires installation
 include_once('./system/load.loadCheck.php');
@@ -41,7 +43,7 @@ include_once('./system/load.page.php');
 if(in_array($_REQUEST['subtopic'], array("play", "refresh", "client_options_serverscript"))) {
 	echo $main_content;
 } else {
-	if(!ONLY_PAGE)
+    if (!ONLY_PAGE)
 		include_once('./system/load.layout.php');
 	else
 		echo $main_content;
