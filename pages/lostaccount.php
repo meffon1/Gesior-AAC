@@ -369,6 +369,12 @@ if($config['site']['send_emails'])
 					$mail->SMTPAuth = $config['site']['smtp_auth'];
 					$mail->Username = $config['site']['smtp_user'];
 					$mail->Password = $config['site']['smtp_pass'];
+                    if($config['site']['smtp_secure']){
+                        if((int)$config['site']['smtp_port'] == 465)
+                            $mail->SMTPSecure = "ssl";
+                        else
+                            $mail->SMTPSecure = "tls";
+                    }
 				}
 				else
 					$mail->IsMail();
@@ -507,6 +513,12 @@ if($config['site']['send_emails'])
 					$mail->SMTPAuth = $config['site']['smtp_auth'];
 					$mail->Username = $config['site']['smtp_user'];
 					$mail->Password = $config['site']['smtp_pass'];
+                    if($config['site']['smtp_secure']){
+                        if((int)$config['site']['smtp_port'] == 465)
+                            $mail->SMTPSecure = "ssl";
+                        else
+                            $mail->SMTPSecure = "tls";
+                    }
 				}
 				else
 					$mail->IsMail();
@@ -744,6 +756,12 @@ if($config['site']['send_emails'])
 					$mail->SMTPAuth = $config['site']['smtp_auth'];
 					$mail->Username = $config['site']['smtp_user'];
 					$mail->Password = $config['site']['smtp_pass'];
+                    if($config['site']['smtp_secure']){
+                        if((int)$config['site']['smtp_port'] == 465)
+                            $mail->SMTPSecure = "ssl";
+                        else
+                            $mail->SMTPSecure = "tls";
+                    }
 				}
 				else
 					$mail->IsMail();
@@ -912,6 +930,12 @@ if($config['site']['send_emails'])
 					$mail->SMTPAuth = $config['site']['smtp_auth'];
 					$mail->Username = $config['site']['smtp_user'];
 					$mail->Password = $config['site']['smtp_pass'];
+                    if($config['site']['smtp_secure']){
+                        if((int)$config['site']['smtp_port'] == 465)
+                            $mail->SMTPSecure = "ssl";
+                        else
+                            $mail->SMTPSecure = "tls";
+                    }
 				}
 				else
 					$mail->IsMail();
@@ -1084,6 +1108,12 @@ if($config['site']['send_emails'])
 					$mail->SMTPAuth = $config['site']['smtp_auth'];
 					$mail->Username = $config['site']['smtp_user'];
 					$mail->Password = $config['site']['smtp_pass'];
+                    if($config['site']['smtp_secure']){
+                        if((int)$config['site']['smtp_port'] == 465)
+                            $mail->SMTPSecure = "ssl";
+                        else
+                            $mail->SMTPSecure = "tls";
+                    }
 				}
 				else
 					$mail->IsMail();
