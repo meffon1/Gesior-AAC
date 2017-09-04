@@ -1,4 +1,7 @@
-<?PHP
+<?php
+if(!defined('INITIALIZED'))
+    exit;
+
 date_default_timezone_set('America/Sao_Paulo');
 $t=time();
 ob_start('ob_gzhandler');
@@ -7,11 +10,6 @@ if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'
 	exit();
 
 header('X-Ajax-Cip-Response-Type: Container');
-
-include("../config/config.php");
-
-$conn = mysql_pconnect('localhost', 'root', 'Jqzy3GTdpeUBCeWW') or die();
-mysql_select_db($config['site']['sqlBD']);
 
 function f($e) {
 	die('{"AjaxObjects": [{"DataType": "Attributes","Data": "style=background-image:url(account/nok.gif)","Target": "#charactername_indicator"},{"DataType": "HTML","Data": "'.$e.'","Target": "#charactername_errormessage"},{"DataType": "Attributes","Data": "class=red","Target": "#charactername_label"}]}');
@@ -78,13 +76,14 @@ foreach(array('game', 'customer', 'support', 'fuck', 'haha', 'sux', ' abc', 'suc
 	if(strpos($s, $v) !== false)
 		f('This character name is already used. Please select another one!');
 
-$char_name = mysql_escape_string($s);
+$char_name = trim(stripslashes($s));
 
-$check_name = mysql_query("SELECT `id` FROM `players` WHERE `name` = '$char_name' LIMIT 1");
+$check_name = $SQL->query("SELECT `id` FROM `players` WHERE `name` = '$char_name' LIMIT 1")->fetch();
 
-if(mysql_num_rows($check_name) != 0)
+if(count($check_name) > 0)
 	f('This character name is already used. Please select another one!');
 
 echo '{"AjaxObjects": [{"DataType": "Attributes","Data": "style=background-image:url(account/ok.gif);","Target": "#charactername_indicator"},{"DataType": "HTML","Data": "","Target": "#charactername_errormessage"},{"DataType": "Attributes","Data": "class=","Target": "#charactername_label"}]}';
 ob_end_flush();
+
 ?>

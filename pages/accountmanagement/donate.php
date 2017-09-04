@@ -96,10 +96,10 @@ if($logged) {
 								<div class="StepText" style="font-weight: '.(($step == 5) ? 'bold' : 'normal').';">Summary</div>
 							</div>
 						</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		</div>';
 		
 		if($step == 1) {
@@ -248,7 +248,7 @@ if($logged) {
 											</td>
 										</tr>';
 										*/
-									$main_content .= '
+									/*$main_content .= '
 										<tr>
 											<td>
 												<div class="TableShadowContainerRightTop" >
@@ -279,9 +279,15 @@ if($logged) {
 						</tr>
 					</table>
 				</div>
-				<p style="color:red;">Paypal foi desativado temporariamente, pedimos sua paciencia. Em breve estara normalizado.</p>';
+				<p style="color:red;">Paypal foi desativado temporariamente, pedimos sua paciencia. Em breve estara normalizado.</p>';*/
 			
-			$main_content .= '
+			$main_content .= '</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
 				<div class="SubmitButtonRow" >
 					<div class="LeftButton" >
 						<input type="hidden" name="step" value="3">
@@ -368,184 +374,397 @@ if($logged) {
 				# Pagseguro Method
 				if($donateMethod == "pagseguro") {
 					$doubleStatus = $SQL->query("SELECT `value` FROM `server_config` WHERE `config` = 'double'")->fetch();
-					$main_content .= '
-						<div class="TableContainer" style="position:relative;">
-						<style>
-							.ribbonShop-double {
-							background:url('.$layout_name.'/images/shop/ribbon-double.png) no-repeat;
-							width: 80px;
-							height: 80px;
-							position:absolute;
-							right: -5px;
-							top: -5px;
-							z-index:999;
-						}
-						</style>
-						'.(($doubleStatus['value'] == "active") ? '<div class="ribbonShop-double"></div>' : '').'
-							<table class="Table5" cellpadding="0" cellspacing="0">
-							<div class="CaptionContainer" >
-								<div class="CaptionInnerContainer" > 
-									<span class="CaptionEdgeLeftTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
-									<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
-									<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
-									<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
-									<div class="Text" >Points Package</div>
-									<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span> 
-									<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
-									<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
-									<span class="CaptionEdgeRightBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
-								</div>
-							</div>
-							<tr>
-								<td>
-									<div class="InnerTableContainer">
-										<table style="width:100%;" >
-											<tr>
-												<td>
-													<div class="TableShadowContainerRightTop" >
-														<div class="TableShadowRightTop" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rt.gif);" ></div>
-													</div>
-													<div class="TableContentAndRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rm.gif);" >
-														<div class="TableContentContainer" >
-															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
-																<tr bgcolor="'.$config['site']['darkborder'].'">
-																	<td class="LabelV">Donation Price</td>
-																	<td class="LabelV">Amount Points</td>
-																</tr>
-																<tr bgcolor="'.$config['site']['lightborder'].'">
-																	<td>R$ 5,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>5 points</strike> = <font color="green">10 points</font>' : '5 points').'</td>
-																</tr>
-																<tr bgcolor="'.$config['site']['darkborder'].'">
-																	<td>R$ 10,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>10 points</strike> = <font color="green">20 points</font>' : '10 points').'</td>
-																</tr>
-																<tr bgcolor="'.$config['site']['lightborder'].'">
-																	<td>R$ 20,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>20 points</strike> = <font color="green">40 points</font>' : '20 points').'</td>
-																</tr>
-																<tr bgcolor="'.$config['site']['darkborder'].'">
-																	<td>R$ 40,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>40 points</strike> = <font color="green">80 points</font>' : '40 points').'</td>
-																</tr>
-																<tr bgcolor="'.$config['site']['lightborder'].'">
-																	<td>R$ 60,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>60 points</strike> = <font color="green">120 points</font>' : '60 points').'</td>
-																</tr>														
-															</table>
-														</div>
-													</div>											
-													<div class="TableShadowContainer" >
-														<div class="TableBottomShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-bm.gif);" >
-															<div class="TableBottomLeftShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-bl.gif);" ></div>
-															<div class="TableBottomRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-br.gif);" ></div>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</div>
-								</td>
-							</tr>
-						</table>
-					</div><br>';
-					$main_content .= '
-						<form method="post" action="?subtopic=accountmanagement&action=donate">
-						<div class="TableContainer" >
-							<table class="Table5" cellpadding="0" cellspacing="0">
-							<div class="CaptionContainer" >
-								<div class="CaptionInnerContainer" > 
-									<span class="CaptionEdgeLeftTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
-									<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
-									<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
-									<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
-									<div class="Text" >Choose Points Package</div>
-									<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span> 
-									<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
-									<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
-									<span class="CaptionEdgeRightBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
-								</div>
-							</div>
-							<tr>
-								<td>
-									<div class="InnerTableContainer">
-										<table style="width:100%;" >
-											<tr>
-												<td>
-													<div class="TableShadowContainerRightTop" >
-														<div class="TableShadowRightTop" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rt.gif);" ></div>
-													</div>
-													<div class="TableContentAndRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rm.gif);" >
-														<div class="TableContentContainer" >
-															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
-																<tr>
-																	<td class="LabelV">Points Package</td>
-																	<td>
-																		<select name="pointsPackage">
-																			<option value="5" '.(($_REQUEST['pointsPackage'] == 5) ? 'selected' : '').'>5 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="10" '.(($_REQUEST['pointsPackage'] == 10) ? 'selected' : '').'>10 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="15" '.(($_REQUEST['pointsPackage'] == 15) ? 'selected' : '').'>15 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="20" '.(($_REQUEST['pointsPackage'] == 20) ? 'selected' : '').'>20 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="25" '.(($_REQUEST['pointsPackage'] == 25) ? 'selected' : '').'>25 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="30" '.(($_REQUEST['pointsPackage'] == 30) ? 'selected' : '').'>30 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="35" '.(($_REQUEST['pointsPackage'] == 35) ? 'selected' : '').'>35 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="40" '.(($_REQUEST['pointsPackage'] == 40) ? 'selected' : '').'>40 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="45" '.(($_REQUEST['pointsPackage'] == 45) ? 'selected' : '').'>45 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="50" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>50 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="60" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>60 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="70" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>70 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="80" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>80 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="90" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>90 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="100" '.(($_REQUEST['pointsPackage'] == 100) ? 'selected' : '').'>100 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="150" '.(($_REQUEST['pointsPackage'] == 150) ? 'selected' : '').'>150 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="200" '.(($_REQUEST['pointsPackage'] == 200) ? 'selected' : '').'>200 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="250" '.(($_REQUEST['pointsPackage'] == 250) ? 'selected' : '').'>250 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="300" '.(($_REQUEST['pointsPackage'] == 300) ? 'selected' : '').'>300 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																		</select>
-																	</td>
-																</tr>										
-															</table>
-														</div>
-													</div>											
-													<div class="TableShadowContainer" >
-														<div class="TableBottomShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-bm.gif);" >
-															<div class="TableBottomLeftShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-bl.gif);" ></div>
-															<div class="TableBottomRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-br.gif);" ></div>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</div>
-								</td>
-							</tr>
-						</table>
-					</div>';
-					$main_content .= '
-						<div class="SubmitButtonRow" >
-							<div class="LeftButton" >
-								<input type="hidden" name="donateMethod" value="'.$donateMethod.'">
-								<input type="hidden" name="step" value="4">
-								<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)" >
-									<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);" ></div>
-										<input class="ButtonText" type="image" name="Next" alt="Next" src="'.$layout_name.'/images/global/buttons/_sbutton_next.gif" >
-									</div>
-								</div>
-							</div>
-							</form>
-							<div class="RightButton" >
-								<form method="post" action="?subtopic=accountmanagement&action=donate">
-									<input type="hidden" name="donateMethod" value="'.$donateMethod.'">
-									<input type="hidden" name="step" value="2">
-									<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton.gif)" >
-										<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_over.gif);" ></div>
-											<input class="ButtonText" type="image" name="Previous" alt="Previous" src="'.$layout_name.'/images/global/buttons/_sbutton_previous.gif" >
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>';
+//					$main_content .= '
+//						<div class="TableContainer" style="position:relative;">
+//						<style>
+//							.ribbonShop-double {
+//							background:url('.$layout_name.'/images/shop/ribbon-double.png) no-repeat;
+//							width: 80px;
+//							height: 80px;
+//							position:absolute;
+//							right: -5px;
+//							top: -5px;
+//							z-index:999;
+//						}
+//						</style>
+//						'.(($doubleStatus['value'] == "active") ? '<div class="ribbonShop-double"></div>' : '').'
+//							<table class="Table5" cellpadding="0" cellspacing="0">
+//							<div class="CaptionContainer" >
+//								<div class="CaptionInnerContainer" >
+//									<span class="CaptionEdgeLeftTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span>
+//									<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span>
+//									<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span>
+//									<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
+//									<div class="Text" >Points Package</div>
+//									<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
+//									<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span>
+//									<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span>
+//									<span class="CaptionEdgeRightBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span>
+//								</div>
+//							</div>
+//							<tr>
+//								<td>
+//									<div class="InnerTableContainer">
+//										<table style="width:100%;" >
+//											<tr>
+//												<td>
+//													<div class="TableShadowContainerRightTop" >
+//														<div class="TableShadowRightTop" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rt.gif);" ></div>
+//													</div>
+//													<div class="TableContentAndRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rm.gif);" >
+//														<div class="TableContentContainer" >
+//															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
+//																<tr bgcolor="'.$config['site']['darkborder'].'">
+//																	<td class="LabelV">Donation Price</td>
+//																	<td class="LabelV">Amount Points</td>
+//																</tr>
+//																<tr bgcolor="'.$config['site']['lightborder'].'">
+//																	<td>R$ 5,00</td>
+//																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>5 points</strike> = <font color="green">10 points</font>' : '5 points').'</td>
+//																</tr>
+//																<tr bgcolor="'.$config['site']['darkborder'].'">
+//																	<td>R$ 10,00</td>
+//																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>10 points</strike> = <font color="green">20 points</font>' : '10 points').'</td>
+//																</tr>
+//																<tr bgcolor="'.$config['site']['lightborder'].'">
+//																	<td>R$ 20,00</td>
+//																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>20 points</strike> = <font color="green">40 points</font>' : '20 points').'</td>
+//																</tr>
+//																<tr bgcolor="'.$config['site']['darkborder'].'">
+//																	<td>R$ 40,00</td>
+//																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>40 points</strike> = <font color="green">80 points</font>' : '40 points').'</td>
+//																</tr>
+//																<tr bgcolor="'.$config['site']['lightborder'].'">
+//																	<td>R$ 60,00</td>
+//																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>60 points</strike> = <font color="green">120 points</font>' : '60 points').'</td>
+//																</tr>
+//															</table>
+//														</div>
+//													</div>
+//													<div class="TableShadowContainer" >
+//														<div class="TableBottomShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-bm.gif);" >
+//															<div class="TableBottomLeftShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-bl.gif);" ></div>
+//															<div class="TableBottomRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-br.gif);" ></div>
+//														</div>
+//													</div>
+//												</td>
+//											</tr>
+//										</table>
+//									</div>
+//								</td>
+//							</tr>
+//						</table>
+//					</div><br>';
+//
+//
+//                  $main_content .= '
+//						<form method="post" action="?subtopic=accountmanagement&action=donate">
+//						<div class="TableContainer" >
+//							<table class="Table5" cellpadding="0" cellspacing="0">
+//							<div class="CaptionContainer" >
+//								<div class="CaptionInnerContainer" >
+//									<span class="CaptionEdgeLeftTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span>
+//									<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span>
+//									<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span>
+//									<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
+//									<div class="Text" >Choose Points Package</div>
+//									<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
+//									<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span>
+//									<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span>
+//									<span class="CaptionEdgeRightBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span>
+//								</div>
+//							</div>
+//							<tr>
+//								<td>
+//									<div class="InnerTableContainer">
+//										<table style="width:100%;" >
+//											<tr>
+//												<td>
+//													<div class="TableShadowContainerRightTop" >
+//														<div class="TableShadowRightTop" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rt.gif);" ></div>
+//													</div>
+//													<div class="TableContentAndRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rm.gif);" >
+//														<div class="TableContentContainer" >
+//															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
+//																<tr>
+//																	<td class="LabelV">Points Package</td>
+//																	<td>
+//																		<select name="pointsPackage">
+//																			<option value="5" '.(($_REQUEST['pointsPackage'] == 5) ? 'selected' : '').'>5 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="10" '.(($_REQUEST['pointsPackage'] == 10) ? 'selected' : '').'>10 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="15" '.(($_REQUEST['pointsPackage'] == 15) ? 'selected' : '').'>15 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="20" '.(($_REQUEST['pointsPackage'] == 20) ? 'selected' : '').'>20 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="25" '.(($_REQUEST['pointsPackage'] == 25) ? 'selected' : '').'>25 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="30" '.(($_REQUEST['pointsPackage'] == 30) ? 'selected' : '').'>30 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="35" '.(($_REQUEST['pointsPackage'] == 35) ? 'selected' : '').'>35 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="40" '.(($_REQUEST['pointsPackage'] == 40) ? 'selected' : '').'>40 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="45" '.(($_REQUEST['pointsPackage'] == 45) ? 'selected' : '').'>45 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="50" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>50 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="60" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>60 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="70" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>70 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="80" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>80 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="90" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>90 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="100" '.(($_REQUEST['pointsPackage'] == 100) ? 'selected' : '').'>100 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="150" '.(($_REQUEST['pointsPackage'] == 150) ? 'selected' : '').'>150 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="200" '.(($_REQUEST['pointsPackage'] == 200) ? 'selected' : '').'>200 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="250" '.(($_REQUEST['pointsPackage'] == 250) ? 'selected' : '').'>250 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																			<option value="300" '.(($_REQUEST['pointsPackage'] == 300) ? 'selected' : '').'>300 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+//																		</select>
+//																	</td>
+//																</tr>
+//															</table>
+//														</div>
+//													</div>
+//													<div class="TableShadowContainer" >
+//														<div class="TableBottomShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-bm.gif);" >
+//															<div class="TableBottomLeftShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-bl.gif);" ></div>
+//															<div class="TableBottomRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-br.gif);" ></div>
+//														</div>
+//													</div>
+//												</td>
+//											</tr>
+//										</table>
+//									</div>
+//								</td>
+//							</tr>
+//						</table>
+//					</div>';
+//					$main_content .= '
+//						<div class="SubmitButtonRow" >
+//							<div class="LeftButton" >
+//								<input type="hidden" name="donateMethod" value="'.$donateMethod.'">
+//								<input type="hidden" name="step" value="4">
+//								<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)" >
+//									<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);" ></div>
+//										<input class="ButtonText" type="image" name="Next" alt="Next" src="'.$layout_name.'/images/global/buttons/_sbutton_next.gif" >
+//									</div>
+//								</div>
+//							</div>
+//							</form>
+//							<div class="RightButton" >
+//								<form method="post" action="?subtopic=accountmanagement&action=donate">
+//									<input type="hidden" name="donateMethod" value="'.$donateMethod.'">
+//									<input type="hidden" name="step" value="2">
+//									<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton.gif)" >
+//										<div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_over.gif);" ></div>
+//											<input class="ButtonText" type="image" name="Previous" alt="Previous" src="'.$layout_name.'/images/global/buttons/_sbutton_previous.gif" >
+//										</div>
+//									</div>
+//								</form>
+//							</div>
+//						</div>';
+
+                    $_POST['item_quant_1'];
+                    $_POST['account_namev'];
+                    $_POST['emailv'];
+                    $_POST['character_namev'];
+
+                    $main_content .= '<form action="?subtopic=accountmanagement&action=donate" method="post" enctype="application/x-www-form-urlencoded"
+                          xmlns:https="http://www.w3.org/1999/xhtml">
+                        <div class="TableContainer">
+                            <div class="CaptionContainer">
+                                <div class="CaptionInnerContainer">
+                                    <span class="CaptionEdgeLeftTop"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-edge.gif);"></span>
+                                    <span class="CaptionEdgeRightTop"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-edge.gif);"></span>
+                                    <span class="CaptionBorderTop"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/table-headline-border.gif);"></span>
+                                    <span class="CaptionVerticalLeft"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);"></span>
+                                    <div class="Text">Account Information</div>
+                                    <span class="CaptionVerticalRight"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);"></span>
+                                    <span class="CaptionBorderBottom"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/table-headline-border.gif);"></span>
+                                    <span class="CaptionEdgeLeftBottom"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-edge.gif);"></span>
+                                    <span class="CaptionEdgeRightBottom"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-edge.gif);"></span>
+                                </div>
+                            </div>
+                            <table class="Table1" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="InnerTableContainer">
+                                            <table style="width: 100%;">
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><b>Account Name:</b></td>
+                                                                <td><input type="hidden" value="' . $account_logged->getName() . '" name="account_namev"/>' . $account_logged->getCustomField("name") . '
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><b>Email:</b></td>
+                                                                <td><input type="hidden" value="' . $account_logged->getCustomField("email") . '" name="emailv"/>' . $account_logged->getCustomField("email") . '
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+                        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+                        <div class="TableContainer">
+                            <div class="CaptionContainer">
+                                <div class="CaptionInnerContainer">
+                                    <span class="CaptionEdgeLeftTop"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-edge.gif);"></span>
+                                    <span class="CaptionEdgeRightTop"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-edge.gif);"></span>
+                                    <span class="CaptionBorderTop"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/table-headline-border.gif);"></span>
+                                    <span class="CaptionVerticalLeft"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);"></span>
+                                    <div class="Text">Donation Package</div>
+                                    <span class="CaptionVerticalRight"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-vertical.gif);"></span>
+                                    <span class="CaptionBorderBottom"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/table-headline-border.gif);"></span>
+                                    <span class="CaptionEdgeLeftBottom"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-edge.gif);"></span>
+                                    <span class="CaptionEdgeRightBottom"
+                                          style="background-image: url(' . $layout_name . '/images/global/content/box-frame-edge.gif);"></span>
+                                </div>
+                            </div>
+                            <table class="Table1" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="InnerTableContainer">
+                                            <table style="width: 100%;">
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <script>
+                                                            // change the selected service
+                                                            function ChangeService(a_ServiceID) {
+                                                                // console.log("### ChangeService() ### a_ServiceID #" + a_ServiceID + "# a_ServiceCategoryID #" + a_ServiceCategoryID + "#");
+                                                                // set the ServiceID for the change country form
+                                                                var serviceID = $("#CC_ServiceID");
+                                                                serviceID.val(a_ServiceID);
+                                                                serviceID.attr("name", "InitialServiceID");
+                                                                // activate the radio button itself and set the price
+                                                                $("#ServiceID_" + a_ServiceID).attr("checked", "checked");
+                                                                $(".ServiceID_Icon_Container").css("background-color", "");
+                                                                                                            
+                                                                // activate and mark the selected icon
+                                                                $(".ServiceID_Icon_Selected").css("background-image", "");
+                                                                $("#ServiceID_Icon_Selected_" + a_ServiceID).css("background-image", "url(' . $layout_name . '/images/payment/serviceid_icon_selected.png)");
+                                                                return;
+                                                            }
+                                                        </script>';
+
+                                        $countOffer=1;
+
+                                        foreach ($config['pagseguro']['offers'] as $price => $coinCount){
+                                            $main_content .= '
+                                                            <div class="ServiceID_Icon_Container w3-card-4" id="ServiceID_Icon_Container_' . $price . '">
+                                                                <div class="ServiceID_Icon_Container_Background" id=""
+                                                                     style="background-image:url(' . $layout_name . '/images/payment/serviceid_icon_normal.png);">
+                                                                    <div class="ServiceID_Icon" id="ServiceID_Icon_' . $price . '" style=""
+                                                                         onclick="ChangeService('.$price.');">
+                                                                        <div class="ServiceID_Icon_New" id="ServiceID_Icon_New_' . $price . '"
+                                                                             style="background-image:url(' . $layout_name . '/images/payment/serviceid_' . $countOffer . '.png);">
+                                                                        </div>
+                                                                        <div class="ServiceID_Icon_Selected" id="ServiceID_Icon_Selected_' . $price . '">
+                                                                        </div>                                                
+                                                                        <label for="ServiceID_' . $price . '">
+                                                                            <div class="ServiceIDLabelContainer">
+                                                                                <div class="ServiceIDLabel">
+                                                                                    <input id="ServiceID_' . $price . '" name="ServiceID" value="' . $price . '"
+                                                                                       style="display: none;"
+                                                                                       type="radio">' . $coinCount . ' Coins
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="ServiceIDPriceContainer">
+                                                                                <span class="ServiceIDPrice" id="PD_133">R$ '.($price/100).',00</span> *
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>';
+                                            $countOffer++;
+                                        };
+                                        unset($countOffer);
+
+                                        $main_content.= '<script>
+                                                            function selectDefault(){    
+                                                                
+                                                                ChangeService(' .current(array_keys($config['pagseguro']['offers'])) . ');                                            
+                                                            }
+                                                            
+                                                            $(document).ready(selectDefault())                                    
+                                                            
+                                                        </script>
+                    
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <small>Todas as doações feitas pelo pagseguro são automatizadas. 
+                                                        Os pontos são entregues assim que o pagseguro confirma a transação aos nossos servidores. 
+                                                            <br/>                                                            
+                                                        </small>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+                        <table width="100%">
+                            <tbody>
+                            <tr align="center">
+                                <td>
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                        <tr>
+                                            <td style="border: 0px none;">
+                                                <div class="BigButton"
+                                                     style="background-image: url(' . $layout_name . '/images/global/buttons/sbutton.gif);">
+                                                <div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver"
+                                                         style="background-image: url(' . $layout_name . '/images/global/buttons/sbutton_over.gif);"></div>
+                                                    <input type="hidden" name="step" value="4">
+                                                    <input type="hidden" name="donateMethod" value="'.$donateMethod.'">
+                                                    <input class="ButtonText" name="Continue" alt="Continue"
+                                                           src="' . $layout_name . '/images/global/buttons/_sbutton_continue.gif" type="image">
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                    </table>
+                    ';
+
 				}
+
+
+
+				################################################################################################################################################################
+				##############################################################################################################################
+				#####################################################################################################################################################################
 				# Paypal Method
 				if($donateMethod == "paypal") {
 					$doubleStatus = $SQL->query("SELECT `value` FROM `server_config` WHERE `config` = 'double'")->fetch();
@@ -972,14 +1191,17 @@ if($logged) {
 		}
 		
 		if($step == 4) {
-			
+
 			$donateValue = $_REQUEST['pointsPackage'];
 			$donateMethod = $_REQUEST['donateMethod'];
 			$donateBank = $_REQUEST['bankname'];
 			
 			if($donateMethod == "pagseguro") {
 				$main_content .= '
-					<form method="post" action="?subtopic=accountmanagement&action=donate">
+					<!-- <form method="post" action="?subtopic=accountmanagement&action=donate"> -->
+					    <form target="pagseguro" method="post" action="dntpagseguro.php">
+					    <input type="hidden" name="accname" value="'.$account_logged->getName().'">
+					    <input type="hidden" name="pid" value="'.$_POST['ServiceID'].'">					    
 						<div class="TableContainer" >
 							<table class="Table5" cellpadding="0" cellspacing="0">
 							<div class="CaptionContainer" >
@@ -988,7 +1210,7 @@ if($logged) {
 									<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
 									<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
 									<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
-									<div class="Text" >Confirm your order</div>
+									<div class="Text" >Donation Details</div>
 									<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span> 
 									<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
 									<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
@@ -1009,8 +1231,12 @@ if($logged) {
 															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																<tr>
 																	<td class="LabelV" width="30%">Order</td>
-																	<td>'.$donateValue.' Premium Points</td>
-																</tr>										
+																	<td>'.$config['pagseguro']['offers'][$_POST['ServiceID']].' Premium Points</td>
+																</tr>
+																<tr>
+																	<td class="LabelV" width="30%">Donation Amount</td>
+																	<td>R$ '.($_POST['ServiceID'] / 100).',00</td>
+																</tr>
 															</table>
 														</div>
 													</div>											
@@ -1031,12 +1257,12 @@ if($logged) {
 														<div class="TableContentContainer" >
 															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																<tr>
-																	<td class="LabelV" width="30%">Donate Method</td>
+																	<td class="LabelV" width="30%">Donation Method</td>
 																	<td>PagSeguro</td>
 																</tr>
 																<tr>
 																	<td class="LabelV">Account Name</td>
-																	<td>'.$account_logged->getName().'</td>
+																	<td><input type="hidden" value="' . $account_logged->getName() . '" name="account_namev"/>'.$account_logged->getName().'</td>
 																</tr>										
 															</table>
 														</div>

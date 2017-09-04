@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Jun-2017 às 01:44
+-- Generation Time: 04-Set-2017 às 21:10
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -37,13 +37,12 @@ CREATE TABLE `accounts` (
   `lastday` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `email` varchar(255) NOT NULL DEFAULT '',
   `creation` int(11) NOT NULL DEFAULT '0',
+  `vote` int(11) NOT NULL,
   `key` varchar(20) NOT NULL DEFAULT '0',
   `email_new` varchar(255) NOT NULL DEFAULT '',
   `email_new_time` int(11) NOT NULL DEFAULT '0',
   `rlname` varchar(255) NOT NULL DEFAULT '',
   `location` varchar(255) NOT NULL DEFAULT '',
-  `birth_date` varchar(50) NOT NULL,
-  `gender` varchar(20) NOT NULL,
   `page_access` int(11) NOT NULL DEFAULT '0',
   `email_code` varchar(255) NOT NULL DEFAULT '',
   `next_email` int(11) NOT NULL DEFAULT '0',
@@ -52,7 +51,11 @@ CREATE TABLE `accounts` (
   `create_ip` int(11) NOT NULL DEFAULT '0',
   `last_post` int(11) NOT NULL DEFAULT '0',
   `flag` varchar(80) NOT NULL DEFAULT '',
-  `vote` int(11) NOT NULL,
+  `vip_time` int(11) NOT NULL,
+  `guild_points` int(11) NOT NULL DEFAULT '0',
+  `guild_points_stats` int(11) NOT NULL DEFAULT '0',
+  `birth_date` varchar(50) NOT NULL,
+  `gender` varchar(20) NOT NULL,
   `loyalty_points` bigint(20) NOT NULL DEFAULT '0',
   `authToken` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -61,19 +64,8 @@ CREATE TABLE `accounts` (
 -- Extraindo dados da tabela `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `name`, `password`, `secret`, `type`, `premdays`, `coins`, `lastday`, `email`, `creation`, `key`, `email_new`, `email_new_time`, `rlname`, `location`, `birth_date`, `gender`, `page_access`, `email_code`, `next_email`, `premium_points`, `create_date`, `create_ip`, `last_post`, `flag`, `vote`, `loyalty_points`, `authToken`) VALUES
-(1, '1', '2f165e4cf99cd9298fas65d6s5da7924cfc9c', NULL, 1, 0, 0, 0, 'tibia@gmail.com', 1429670486, '', '', 0, '', '', '', '', 3, '', 0, 0, 0, 2147483647, 0, 'unknown', 0, 0, '');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `accounts_options`
---
-
-CREATE TABLE `accounts_options` (
-  `account_id` int(11) NOT NULL,
-  `options` text COLLATE latin1_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+INSERT INTO `accounts` (`id`, `name`, `password`, `secret`, `type`, `premdays`, `coins`, `lastday`, `email`, `creation`, `vote`, `key`, `email_new`, `email_new_time`, `rlname`, `location`, `page_access`, `email_code`, `next_email`, `premium_points`, `create_date`, `create_ip`, `last_post`, `flag`, `vip_time`, `guild_points`, `guild_points_stats`, `birth_date`, `gender`, `loyalty_points`, `authToken`) VALUES
+(1, '1', '060d389051fa6ca22f9acd4be7d1557fe', NULL, 1, 0, 0, 0, '', 0, 0, '0', '', 0, '', '', 9999, '', 0, 0, 0, 0, 0, 'unknown', 0, 0, 0, '', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -121,13 +113,39 @@ CREATE TABLE `account_viplist` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `announcements`
+--
+
+CREATE TABLE `announcements` (
+  `id` int(10) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `author` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `bot_reports`
+--
+
+CREATE TABLE `bot_reports` (
+  `id` int(11) NOT NULL,
+  `reporter` varchar(40) NOT NULL,
+  `reported` varchar(40) NOT NULL,
+  `report_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `global_storage`
 --
 
 CREATE TABLE `global_storage` (
-  `key` varchar(32) NOT NULL,
-  `world_id` tinyint(4) UNSIGNED NOT NULL DEFAULT '0',
-  `value` text NOT NULL
+  `key` int(10) NOT NULL,
+  `value` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -145,7 +163,8 @@ CREATE TABLE `guilds` (
   `description` text NOT NULL,
   `guild_logo` mediumblob,
   `create_ip` int(11) NOT NULL DEFAULT '0',
-  `balance` bigint(20) UNSIGNED NOT NULL DEFAULT '0'
+  `balance` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `last_execute_points` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -253,8 +272,6 @@ CREATE TABLE `houses` (
   `beds` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
 -- Estrutura da tabela `house_lists`
 --
@@ -278,44 +295,6 @@ CREATE TABLE `ip_bans` (
   `expires_at` bigint(20) NOT NULL,
   `banned_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `links`
---
-
-CREATE TABLE `links` (
-  `account_id` int(11) NOT NULL,
-  `code` varchar(50) NOT NULL,
-  `code_date` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `links`
---
-
-INSERT INTO `links` (`account_id`, `code`, `code_date`) VALUES
-(4384, '3w9wgz8su6cgdaje1ib5', 1468805237),
-(4384, 'xokeuwhmcdcmc6x4khhu', 1468805363),
-(4384, '5ma8ho1gjnutx6gbk195', 1468805590),
-(4384, 'gokr41gobj136cf3bi51', 1468805868),
-(4384, 'kxbw1k4mjqtavqkgufe3', 1468805882),
-(4384, 'qcrkyccqj2b1q2aimr3j', 1468805950),
-(4384, 'uzr1z62bf6hcgdxndtsh', 1468806072),
-(4383, 'lu7cg697yelg3hv6oh5h', 1469416285),
-(4383, 'huyejrto7m48mk8j81ov', 1469416369),
-(4383, 'lkz24xf4zjzbexe588xu', 1469416391),
-(4383, 'sez37nwx8yanhbbws6c1', 1469416406),
-(4383, 'fdr23849wrn3zsxwnule', 1469416558),
-(4383, '2armh8f5irc1wtg5nk84', 1480199355),
-(4383, 'lc9ikdjxymyjfr61nv3o', 1480199464),
-(4383, '9h78myg5r9lycwshdaou', 1480199485),
-(4383, '8c84uhcwrj21a5bguo88', 1480199518),
-(4383, 'lfyls21t74hjnic1wmks', 1480199573),
-(4383, 'xkqet6ecnc3cqf7wenta', 1480199587),
-(4383, 's8sk5fxud2bxaricjgqa', 1480199632),
-(4383, 'gblirbom8bghtx1r5cek', 1480199788);
 
 -- --------------------------------------------------------
 
@@ -369,29 +348,17 @@ CREATE TABLE `market_offers` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `newsticker`
+-- Estrutura da tabela `pagseguro_transactions`
 --
 
-CREATE TABLE `newsticker` (
-  `id` int(11) NOT NULL,
-  `date` int(11) NOT NULL,
-  `text` varchar(255) NOT NULL,
-  `icon` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `pagseguro`
---
-
-CREATE TABLE `pagseguro` (
-  `date` datetime NOT NULL,
-  `code` varchar(50) NOT NULL,
-  `reference` varchar(200) NOT NULL,
-  `type` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
-  `lastEventDate` datetime NOT NULL
+CREATE TABLE `pagseguro_transactions` (
+  `transaction_code` varchar(36) NOT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  `payment_method` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `item_count` int(11) NOT NULL,
+  `data` datetime NOT NULL,
+  `payment_amount` float DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -425,7 +392,7 @@ CREATE TABLE `players` (
   `posx` int(11) NOT NULL DEFAULT '0',
   `posy` int(11) NOT NULL DEFAULT '0',
   `posz` int(11) NOT NULL DEFAULT '0',
-  `conditions` blob NOT NULL,
+  `conditions` blob,
   `cap` int(11) NOT NULL DEFAULT '0',
   `sex` int(11) NOT NULL DEFAULT '0',
   `lastlogin` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
@@ -437,7 +404,6 @@ CREATE TABLE `players` (
   `blessings` tinyint(2) NOT NULL DEFAULT '0',
   `onlinetime` int(11) NOT NULL DEFAULT '0',
   `deletion` bigint(15) NOT NULL DEFAULT '0',
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `balance` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `offlinetraining_time` smallint(5) UNSIGNED NOT NULL DEFAULT '43200',
   `offlinetraining_skill` int(11) NOT NULL DEFAULT '-1',
@@ -456,16 +422,13 @@ CREATE TABLE `players` (
   `skill_shielding_tries` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `skill_fishing` int(10) UNSIGNED NOT NULL DEFAULT '10',
   `skill_fishing_tries` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `description` varchar(255) NOT NULL DEFAULT '',
   `comment` text NOT NULL,
   `create_ip` int(11) NOT NULL DEFAULT '0',
   `create_date` int(11) NOT NULL DEFAULT '0',
   `hide_char` int(11) NOT NULL DEFAULT '0',
-  `signature` varchar(255) NOT NULL,
-  `marriage_status` tinyint(1) NOT NULL DEFAULT '0',
-  `marriage_spouse` int(11) NOT NULL DEFAULT '-1',
-  `loyalty_ranking` tinyint(1) NOT NULL DEFAULT '0',
-  `skill_critical_hit_chance` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `cast` tinyint(1) NOT NULL DEFAULT '0',
   `skill_critical_hit_chance_tries` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `skill_critical_hit_damage` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `skill_critical_hit_damage_tries` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
@@ -476,27 +439,152 @@ CREATE TABLE `players` (
   `skill_mana_leech_chance` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `skill_mana_leech_chance_tries` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `skill_mana_leech_amount` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `skill_mana_leech_amount_tries` bigint(20) UNSIGNED NOT NULL DEFAULT '0'
+  `skill_mana_leech_amount_tries` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `skill_criticalhit_chance_tries` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `skill_criticalhit_damage` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `skill_criticalhit_damage_tries` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `skill_criticalhit_chance` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `skill_lifeleech_chance` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `skill_manaleech_chance` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `skill_lifeleech_amount` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `skill_manaleech_amount` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `marriage_status` tinyint(11) NOT NULL DEFAULT '0',
+  `skill_critical_hit_chance` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `signature` varchar(255) NOT NULL,
+  `marriage_spouse` int(11) NOT NULL DEFAULT '-1',
+  `loyalty_ranking` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `players`
 --
 
-INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `vocation`, `health`, `healthmax`, `experience`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `town_id`, `posx`, `posy`, `posz`, `conditions`, `cap`, `sex`, `lastlogin`, `lastip`, `save`, `skull`, `skulltime`, `lastlogout`, `blessings`, `onlinetime`, `deletion`, `deleted`, `balance`, `offlinetraining_time`, `offlinetraining_skill`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `description`, `comment`, `create_ip`, `create_date`, `hide_char`, `signature`, `marriage_status`, `marriage_spouse`, `loyalty_ranking`, `skill_critical_hit_chance`, `skill_critical_hit_chance_tries`, `skill_critical_hit_damage`, `skill_critical_hit_damage_tries`, `skill_life_leech_chance`, `skill_life_leech_chance_tries`, `skill_life_leech_amount`, `skill_life_leech_amount_tries`, `skill_mana_leech_chance`, `skill_mana_leech_chance_tries`, `skill_mana_leech_amount`, `skill_mana_leech_amount_tries`) VALUES
-(1, 'Account Manager', 1, 1, 8, 0, 185, 185, 4200, 44, 98, 15, 76, 128, 0, 0, 35, 35, 0, 100, 1, 0, 0, 0, '', 420, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, '', '', 0, 0, 0, '', 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 'Rook Sample', 1, 1, 1, 0, 150, 150, 0, 69, 76, 78, 58, 128, 0, 0, 5, 5, 0, 100, 6, 0, 0, 0, '', 420, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, '', '', 0, 0, 0, '', 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, 'Sorcerer Sample', 1, 1, 8, 1, 185, 185, 4200, 44, 98, 15, 76, 128, 0, 0, 35, 35, 0, 100, 1, 0, 0, 0, '', 420, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, '', '', 0, 0, 0, '', 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, 'Druid Sample', 1, 1, 8, 2, 185, 185, 4200, 44, 98, 15, 76, 128, 0, 0, 35, 35, 0, 100, 1, 0, 0, 0, '', 420, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, '', '', 0, 0, 0, '', 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(5, 'Paladin Sample', 1, 1, 8, 3, 185, 185, 4200, 44, 98, 15, 76, 128, 0, 0, 35, 35, 0, 100, 1, 0, 0, 0, '', 420, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, '', '', 0, 0, 0, '', 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(6, 'Knight Sample', 1, 1, 8, 4, 185, 185, 4200, 44, 98, 15, 76, 128, 0, 0, 35, 35, 0, 100, 1, 0, 0, 0, '', 420, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, '', '', 0, 0, 0, '', 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `vocation`, `health`, `healthmax`, `experience`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `town_id`, `posx`, `posy`, `posz`, `conditions`, `cap`, `sex`, `lastlogin`, `lastip`, `save`, `skull`, `skulltime`, `lastlogout`, `blessings`, `onlinetime`, `deletion`, `balance`, `offlinetraining_time`, `offlinetraining_skill`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `deleted`, `description`, `comment`, `create_ip`, `create_date`, `hide_char`, `cast`, `skill_critical_hit_chance_tries`, `skill_critical_hit_damage`, `skill_critical_hit_damage_tries`, `skill_life_leech_chance`, `skill_life_leech_chance_tries`, `skill_life_leech_amount`, `skill_life_leech_amount_tries`, `skill_mana_leech_chance`, `skill_mana_leech_chance_tries`, `skill_mana_leech_amount`, `skill_mana_leech_amount_tries`, `skill_criticalhit_chance_tries`, `skill_criticalhit_damage`, `skill_criticalhit_damage_tries`, `skill_criticalhit_chance`, `skill_lifeleech_chance`, `skill_manaleech_chance`, `skill_lifeleech_amount`, `skill_manaleech_amount`, `marriage_status`, `skill_critical_hit_chance`, `signature`, `marriage_spouse`, `loyalty_ranking`) VALUES
+(1, 'Rook Sample', 1, 1, 2, 0, 155, 155, 100, 0, 95, 78, 115, 128, 0, 0, 10, 10, 0, 0, 6, 32103, 32192, 6, '', 400, 0, 0, 0, 1, 0, 0, 0, 63, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', -1, 0),
+(2, 'Sorcerer Sample', 1, 1, 8, 1, 180, 180, 4200, 0, 95, 78, 115, 128, 0, 0, 35, 35, 0, 100, 2, 32104, 32191, 6, '', 400, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', -1, 0),
+(3, 'Druid Sample', 1, 1, 8, 2, 180, 180, 4200, 0, 95, 78, 115, 128, 0, 0, 35, 35, 0, 100, 2, 32104, 32191, 6, 0x010004000002ffffffff0360ea00001a001b00000000fe, 400, 0, 1407021516, 255183537, 1, 0, 0, 1407021548, 0, 32, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', -1, 0),
+(4, 'Paladin Sample', 1, 1, 8, 3, 180, 180, 4200, 0, 95, 78, 115, 128, 0, 0, 35, 35, 0, 100, 2, 32104, 32191, 6, '', 400, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', -1, 0),
+(5, 'Knight Sample', 1, 1, 8, 4, 180, 180, 4200, 0, 95, 78, 115, 128, 0, 0, 35, 35, 0, 100, 2, 32104, 32191, 6, '', 400, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', -1, 0);
 
 --
 -- Acionadores `players`
 --
 DELIMITER $$
-CREATE TRIGGER `ondelete_players` BEFORE DELETE ON `players` FOR EACH ROW BEGIN
-    UPDATE `houses` SET `owner` = 0 WHERE `owner` = OLD.`id`;
+CREATE TRIGGER `initialQuests` AFTER INSERT ON `players` FOR EACH ROW BEGIN
+
+    INSERT INTO player_storage VALUES 
+    
+    (NEW.id, 12300,1),
+    (NEW.id, 12301,2),
+    (NEW.id, 12302,3),
+    (NEW.id, 12303,5),
+    (NEW.id, 12304,3),
+    (NEW.id, 12305,6),
+    
+    
+    (NEW.id, 50716,1),
+    (NEW.id, 50717,2),
+    (NEW.id, 50718,2),
+    (NEW.id, 50719,2),
+    
+    
+    (NEW.id, 12400,1),
+    (NEW.id, 12401,2), 
+    (NEW.id, 12402,2), 
+    
+    
+    (NEW.id, 12240,48),
+    (NEW.id, 12241,6),
+    (NEW.id, 12242,8),
+    (NEW.id, 12243,6),
+    (NEW.id, 12244,6),
+    (NEW.id, 12245,8),
+    (NEW.id, 12246,5),
+    (NEW.id, 12247,5),
+    (NEW.id, 12248,4),
+    (NEW.id, 12249,1),
+    
+    
+    (NEW.id, 100157,1),
+    
+    
+    (NEW.id, 12600,1),
+    (NEW.id, 12603,2),
+    (NEW.id, 12604,6),
+    (NEW.id, 12606,3),
+    (NEW.id, 12608,2),
+    
+    
+    (NEW.id, 12200,1),
+    (NEW.id, 12201,3),
+    (NEW.id, 12202,5),
+    (NEW.id, 12203,3),
+    (NEW.id, 12204,2),
+    (NEW.id, 12205,6),
+    (NEW.id, 12206,8),
+    (NEW.id, 12207,3),
+    (NEW.id, 12208,4),
+    (NEW.id,12209,1),
+    
+    
+    (NEW.id, 12160,20),
+    (NEW.id, 12161,7),
+    (NEW.id, 12162,3),
+    (NEW.id, 12163,6),
+    (NEW.id, 12164,3),
+    (NEW.id, 12165,3),
+    (NEW.id, 12166,3),
+    
+    
+    
+    (NEW.id,12130,25),
+    (NEW.id, 12131,3),
+    (NEW.id, 12132,6),
+    (NEW.id, 12133,3),
+    (NEW.id, 12134,2),
+    (NEW.id, 12135,7),
+    (NEW.id, 12136,3),
+    (NEW.id, 12137,3),
+    (NEW.id, 12138,2),
+    (NEW.id, 12139,1),
+    
+    
+    (NEW.id,50013,1),
+    (NEW.id,50014,1),
+    (NEW.id,50015,1),
+    (NEW.id,50016,1),
+    (NEW.id,50018,1),
+    (NEW.id,50019,1),
+    
+    
+    (NEW.id, 12700,1),
+    (NEW.id, 12707,1),
+    (NEW.id, 12703,1),
+    (NEW.id, 12710,4),
+    
+    
+    (NEW.id, 101,2),
+    (NEW.id, 102,5),
+    (NEW.id, 103,3),
+    (NEW.id, 104,3),
+    (NEW.id, 105,3),
+    (NEW.id, 106,2),
+    (NEW.id, 107,1),
+    
+    
+    (NEW.id, 12650,1),
+    
+    
+    (NEW.id, 12350,25),
+    (NEW.id, 12351,3),
+    (NEW.id, 12352,3),
+    (NEW.id,12353,3),
+    (NEW.id, 12354,3),
+    (NEW.id, 12355,3),
+    (NEW.id, 12356,4),
+    (NEW.id, 12357,6),
+    (NEW.id, 12358,1);
+    
 END
 $$
 DELIMITER ;
@@ -511,7 +599,6 @@ CREATE TABLE `players_online` (
   `player_id` int(11) NOT NULL
 ) ENGINE=MEMORY DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `player_deaths`
@@ -551,10 +638,11 @@ CREATE TABLE `player_depotitems` (
 --
 
 CREATE TABLE `player_former_names` (
+  `id` int(11) NOT NULL,
   `player_id` int(11) NOT NULL,
   `former_name` varchar(35) NOT NULL,
   `date` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -584,6 +672,19 @@ CREATE TABLE `player_items` (
   `itemtype` smallint(6) NOT NULL DEFAULT '0',
   `count` smallint(5) NOT NULL DEFAULT '0',
   `attributes` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `player_kills`
+--
+
+CREATE TABLE `player_kills` (
+  `player_id` int(11) NOT NULL,
+  `time` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `target` int(11) NOT NULL,
+  `unavenged` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -637,6 +738,7 @@ CREATE TABLE `player_storage` (
   `value` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
 -- --------------------------------------------------------
 
 --
@@ -653,11 +755,9 @@ CREATE TABLE `server_config` (
 --
 
 INSERT INTO `server_config` (`config`, `value`) VALUES
-('db_version', '24'),
-('double', 'desactived'),
-('motd_hash', 'd40f8dcfa99c13f947571211f86d3e1edd1b329c'),
-('motd_num', '2'),
-('players_record', '1');
+('motd_hash', '7371dbec94d303b6825d9c12cf6d83ffd43de433'),
+('motd_num', '3'),
+('players_record', '0');
 
 -- --------------------------------------------------------
 
@@ -682,6 +782,60 @@ CREATE TABLE `store_history` (
 CREATE TABLE `tile_store` (
   `house_id` int(11) NOT NULL,
   `data` longblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Estrutura da tabela `videos`
+--
+
+CREATE TABLE `videos` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descricao` text NOT NULL,
+  `categoria` int(11) NOT NULL,
+  `link` varchar(11) NOT NULL,
+  `ativo` int(1) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `videos_categorias`
+--
+
+CREATE TABLE `videos_categorias` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `videos_comentarios`
+--
+
+CREATE TABLE `videos_comentarios` (
+  `id` int(11) NOT NULL,
+  `mensagem` text NOT NULL,
+  `character` varchar(255) NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  `topico` int(11) NOT NULL,
+  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ativo` int(1) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `z_changelog`
+--
+
+CREATE TABLE `z_changelog` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL DEFAULT '',
+  `where` varchar(255) NOT NULL DEFAULT '',
+  `date` int(11) NOT NULL DEFAULT '0',
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -713,6 +867,30 @@ CREATE TABLE `z_forum` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `z_network_box`
+--
+
+CREATE TABLE `z_network_box` (
+  `id` int(11) NOT NULL,
+  `network_name` varchar(10) NOT NULL,
+  `network_link` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `z_news_tickers`
+--
+
+CREATE TABLE `z_news_tickers` (
+  `date` int(11) NOT NULL DEFAULT '1',
+  `author` int(11) NOT NULL,
+  `image_id` int(3) NOT NULL DEFAULT '0',
+  `text` text NOT NULL,
+  `hide_ticker` tinyint(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
 -- Estrutura da tabela `z_ots_comunication`
 --
 
@@ -730,6 +908,27 @@ CREATE TABLE `z_ots_comunication` (
   `param7` varchar(255) NOT NULL,
   `delete_it` int(2) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `z_ots_guildcomunication`
+--
+
+CREATE TABLE `z_ots_guildcomunication` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `param1` varchar(255) NOT NULL,
+  `param2` varchar(255) NOT NULL,
+  `param3` varchar(255) NOT NULL,
+  `param4` varchar(255) NOT NULL,
+  `param5` varchar(255) NOT NULL,
+  `param6` varchar(255) NOT NULL,
+  `param7` varchar(255) NOT NULL,
+  `delete_it` int(2) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -762,6 +961,63 @@ CREATE TABLE `z_polls_answers` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `z_shopguild_history_item`
+--
+
+CREATE TABLE `z_shopguild_history_item` (
+  `id` int(11) NOT NULL,
+  `to_name` varchar(255) NOT NULL DEFAULT '0',
+  `to_account` int(11) NOT NULL DEFAULT '0',
+  `from_nick` varchar(255) NOT NULL,
+  `from_account` int(11) NOT NULL DEFAULT '0',
+  `price` int(11) NOT NULL DEFAULT '0',
+  `offer_id` int(11) NOT NULL DEFAULT '0',
+  `trans_state` varchar(255) NOT NULL,
+  `trans_start` int(11) NOT NULL DEFAULT '0',
+  `trans_real` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `z_shopguild_history_pacc`
+--
+
+CREATE TABLE `z_shopguild_history_pacc` (
+  `id` int(11) NOT NULL,
+  `to_name` varchar(255) NOT NULL DEFAULT '0',
+  `to_account` int(11) NOT NULL DEFAULT '0',
+  `from_nick` varchar(255) NOT NULL,
+  `from_account` int(11) NOT NULL DEFAULT '0',
+  `price` int(11) NOT NULL DEFAULT '0',
+  `pacc_days` int(11) NOT NULL DEFAULT '0',
+  `trans_state` varchar(255) NOT NULL,
+  `trans_start` int(11) NOT NULL DEFAULT '0',
+  `trans_real` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `z_shopguild_offer`
+--
+
+CREATE TABLE `z_shopguild_offer` (
+  `id` int(11) NOT NULL,
+  `points` int(11) NOT NULL DEFAULT '0',
+  `itemid1` int(11) NOT NULL DEFAULT '0',
+  `count1` int(11) NOT NULL DEFAULT '0',
+  `itemid2` int(11) NOT NULL DEFAULT '0',
+  `count2` int(11) NOT NULL DEFAULT '0',
+  `offer_type` varchar(255) DEFAULT NULL,
+  `offer_description` text NOT NULL,
+  `offer_name` varchar(255) NOT NULL,
+  `pid` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `z_shop_category`
 --
 
@@ -770,18 +1026,8 @@ CREATE TABLE `z_shop_category` (
   `name` varchar(50) NOT NULL,
   `desc` varchar(255) NOT NULL,
   `button` varchar(50) NOT NULL,
-  `hide` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `z_shop_category`
---
-
-INSERT INTO `z_shop_category` (`id`, `name`, `desc`, `button`, `hide`) VALUES
-(2, 'Extra Services', 'Buy an extra service to transfer a character to another game world, to change your character name or sex, to change your account name, or to get a new recovery key.', '_sbutton_getextraservice.gif', 0),
-(3, 'Mounts', 'Buy your characters one or more of the fabulous mounts offered here.', '_sbutton_getmount.gif', 1),
-(4, 'Outfits', 'Buy your characters one or more of the fancy outfits offered here.', '_sbutton_getoutfit.gif', 1),
-(5, 'Items', 'Buy items for your character be more stronger in the game.', '_sbutton_getextraservice.gif', 0);
+  `hide` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -798,58 +1044,7 @@ CREATE TABLE `z_shop_donates` (
   `price` varchar(20) NOT NULL,
   `points` int(11) NOT NULL,
   `status` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `z_shop_donates`
---
-
-INSERT INTO `z_shop_donates` (`id`, `date`, `reference`, `account_name`, `method`, `price`, `points`, `status`) VALUES
-(249, 1437322115, 'LIFT0P', 'MANCHA123', 'pagseguro', '30.00', 30, 'waiting'),
-(250, 1437330819, 'EZ0ORI', 'THIAGOSHOT', 'pagseguro', '45.00', 45, 'waiting'),
-(251, 1437334842, '5KEXKG', 'TONYCRUZM', 'pagseguro', '20.00', 20, 'waiting'),
-(252, 1437340193, '2E23FZ', 'GAMST123', 'pagseguro', '300.00', 300, 'waiting'),
-(253, 1437402041, 'PSLOR5', 'HALO10', 'paypal', '200.00', 200, 'confirm'),
-(254, 1437414629, 'M5VENK', '2520720LEO', 'pagseguro', '5.00', 5, 'waiting'),
-(255, 1437425884, 'W0YRTV', '850163', 'paypal', '5.00', 5, 'confirm'),
-(256, 1437425900, 'ALJACA', '850163', 'paypal', '5.00', 5, 'confirm'),
-(257, 1467954290, '-Caixa Economica', '451994', 'banktransfer', '300.00', 300, 'received'),
-(258, 1467954615, '-Caixa Economica', '451994', 'banktransfer', '5.00', 5, 'received'),
-(259, 1467954689, '-Caixa Economica', '451994', 'banktransfer', '5.00', 5, 'received'),
-(260, 1467954702, '-Caixa Economica', '451994', 'banktransfer', '5.00', 5, 'received'),
-(261, 1467954716, 'SEVVS-Caixa Economica', '451994', 'banktransfer', '5.00', 5, 'received'),
-(262, 1470607117, 'SEVVS', '451994', 'pagseguro', '5.00', 5, 'waiting'),
-(263, 1470611654, 'SEVVS-Caixa Economica', '451994', 'banktransfer', '5.00', 5, 'received'),
-(264, 1470612017, '9WSOT-Caixa Economica', '451994', 'banktransfer', '300.00', 300, 'received'),
-(265, 1480018968, 'IS1TL-Caixa Economica', '451994', 'banktransfer', '5.00', 5, 'confirmed');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `z_shop_donate_confirm`
---
-
-CREATE TABLE `z_shop_donate_confirm` (
-  `id` int(11) NOT NULL,
-  `date` int(11) NOT NULL,
-  `account_name` varchar(50) NOT NULL,
-  `donate_id` int(11) NOT NULL,
-  `msg` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `z_shop_donate_confirm`
---
-
-INSERT INTO `z_shop_donate_confirm` (`id`, `date`, `account_name`, `donate_id`, `msg`) VALUES
-(33, 1467954347, '451994', 257, 'Fiz o pagamento da doaÃ§Ã£o, aguardo resposta.'),
-(34, 1470611691, '451994', 263, 'asdasdasdasdsadasdsadasdsadasdasdasdasdasdas\r\ndas\r\ndas\r\ndas\r\ndasd\r\nasd\r\nasd'),
-(35, 1470611710, '451994', 258, 'ALDPLDP`SALDPÃ¡sldpÃ¡sldasdijasduasdashduashduashdusahduiashduisahduiasdhuiasdhiuasdhuiasdhiuadhuaisdhuishd'),
-(36, 1470611728, '451994', 259, 'm3JQ3NQ3N4IQ3N4IUQN4UI3N4IUQ3NQ34'),
-(37, 1470611747, '451994', 260, 'aisjidajiodjaeiorjijraiejioaerjiorjioajrioaejrioajriorjioaejrioaerj'),
-(38, 1470611769, '451994', 261, 'NJAenjanernaerunaernIURAENARUNARunarnauirnuirnaiunriuaenr'),
-(39, 1470612062, '451994', 264, 'okopkopokop1kok3o1k3op12k3op1k3op1k321'),
-(40, 1480343198, '451994', 265, 'fefaefaeradfadfafasdsadafaesasdsadasdasdadfasdasdaveafzc');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -890,127 +1085,8 @@ CREATE TABLE `z_shop_offer` (
   `offer_name` varchar(255) NOT NULL,
   `offer_date` int(11) NOT NULL,
   `default_image` varchar(50) NOT NULL,
-  `hide` int(11) NOT NULL DEFAULT '0'
+  `hide` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `z_shop_offer`
---
-
-INSERT INTO `z_shop_offer` (`id`, `category`, `points`, `price`, `itemid`, `mount_id`, `addon_name`, `count`, `offer_type`, `offer_description`, `offer_name`, `offer_date`, `default_image`, `hide`) VALUES
-(5, 2, 12, '', 0, '', '', 1, 'changename', 'Buy a character name change to rename one of your characters.', 'Character Change Name', 1416865577, 'changename.png', 1),
-(6, 2, 10, '', 0, '', '', 1, 'changesex', 'Buy a character sex change to turn your male character into a female one, or your female character into a male one.', 'Character Change Sex', 1416874417, 'changesex.png', 1),
-(7, 2, 12, '', 0, '', '', 1, 'changeaccountname', 'Buy an account name change to select a different name for your account.', 'Account Name Change', 1416874601, 'changeaccountname.png', 1),
-(8, 2, 25, '', 0, '', '', 1, 'newrk', 'If you need a new recovery key, you can order it here. Note that the letter for the new recovery key can only be sent to the address in the account registration.', 'Recovery Key', 1416874816, 'newrk.png', 0),
-(19, 4, 30, '', 0, '', 'Conjurer', 1, 'outfits', '', 'Conjurer Outfit', 1429676615, '', 0),
-(21, 4, 15, '', 0, '', 'Beastmaster', 1, 'outfits', '', 'Beastmaster Outfit', 1429676648, '', 0),
-(22, 3, 20, '', 0, '74', '', 1, 'mounts', '', 'Emerald Waccoon', 1429876622, '', 0),
-(23, 3, 20, '', 0, '72', '', 1, 'mounts', '', 'Ringtail Waccoon', 1429876713, '', 0),
-(24, 3, 20, '', 0, '73', '', 1, 'mounts', '', 'Night Waccoon', 1429876820, '', 0),
-(26, 3, 25, '', 0, '44', '', 1, 'mounts', '', 'Azudocus', 1429876911, '', 0),
-(27, 3, 25, '', 0, '67', '', 1, 'mounts', '', 'Black Stag', 1429876936, '', 0),
-(28, 3, 25, '', 0, '58', '', 1, 'mounts', '', 'Blackpelt', 1429876956, '', 0),
-(29, 3, 20, '', 0, '61', '', 1, 'mounts', '', 'Copper Fly', 1429876998, '', 0),
-(30, 3, 25, '', 0, '46', '', 1, 'mounts', '', 'Death Crawler', 1429877035, '', 0),
-(31, 3, 20, '', 0, '41', '', 1, 'mounts', '', 'Desert King', 1429877076, '', 0),
-(32, 3, 25, '', 0, '53', '', 1, 'mounts', '', 'Doombringer', 1429877116, '', 0),
-(33, 3, 20, '', 0, '68', '', 1, 'mounts', '', 'Emperor Deer', 1429877141, '', 0),
-(34, 3, 30, '', 0, '47', '', 1, 'mounts', '', 'Flamesteed', 1429877168, '', 0),
-(35, 3, 25, '', 0, '71', '', 1, 'mounts', '', 'Floating Kashmir', 1429877190, '', 0),
-(36, 3, 25, '', 0, '69', '', 1, 'mounts', '', 'Flying Divan', 1429877207, '', 0),
-(37, 3, 25, '', 0, '64', '', 1, 'mounts', '', 'Glacier Vagabond', 1429877226, '', 0),
-(38, 3, 25, '', 0, '59', '', 1, 'mounts', '', 'Golden Dragonfly', 1429877247, '', 0),
-(39, 3, 25, '', 0, '55', '', 1, 'mounts', '', 'Hailtorm Fury', 1429877267, '', 0),
-(40, 3, 25, '', 0, '63', '', 1, 'mounts', '', 'Highland Yak', 1429877288, '', 0),
-(41, 3, 25, '', 0, '48', '', 1, 'mounts', '', 'Jade Lion', 1429877302, '', 0),
-(42, 3, 25, '', 0, '49', '', 1, 'mounts', '', 'Jade Pincer', 1429877315, '', 0),
-(43, 3, 25, '', 0, '70', '', 1, 'mounts', '', 'Magic Carpet', 1429877334, '', 0),
-(44, 3, 30, '', 0, '50', '', 1, 'mounts', '', 'Nethersteed', 1429877347, '', 0),
-(45, 3, 20, '', 0, '37', '', 1, 'mounts', '', 'Platesaurian', 1429877368, '', 0),
-(46, 3, 25, '', 0, '57', '', 1, 'mounts', '', 'Poisonbane', 1429877382, '', 0),
-(47, 3, 25, '', 0, '66', '', 1, 'mounts', '', 'Shadow Hart', 1429877394, '', 0),
-(48, 3, 25, '', 0, '56', '', 1, 'mounts', '', 'Siegebreaker', 1429877408, '', 0),
-(49, 3, 25, '', 0, '60', '', 1, 'mounts', '', 'Steel Bee', 1429877417, '', 0),
-(50, 3, 25, '', 0, '51', '', 1, 'mounts', '', 'Tempest', 1429877428, '', 0),
-(51, 3, 25, '', 0, '36', '', 1, 'mounts', '', 'Tombstinger', 1429877444, '', 0),
-(52, 3, 25, '', 0, '62', '', 1, 'mounts', '', 'Tundra Rambler', 1429877456, '', 0),
-(53, 3, 25, '', 0, '52', '', 1, 'mounts', '', 'Winter King', 1429877471, '', 0),
-(54, 3, 25, '', 0, '54', '', 1, 'mounts', '', 'Woodland Prince', 1429877481, '', 0),
-(55, 4, 20, '', 0, '', 'Ceremonial Garb', 1, 'outfits', '', 'Ceremonial Garb Outfit', 1429877536, '', 0),
-(56, 4, 15, '', 0, '', 'Champion', 1, 'outfits', '', 'Champion Outfit', 1429877546, '', 0),
-(57, 4, 25, '', 0, '', 'Chaos Acolyte', 1, 'outfits', '', 'Chaos Acolyte Outfit', 1429877559, '', 0),
-(58, 4, 20, '', 0, '', 'Death Herald', 1, 'outfits', '', 'Death Herald Outfit', 1429877572, '', 0),
-(60, 4, 15, '', 0, '', 'Ranger', 1, 'outfits', '', 'Ranger Outfit', 1429877652, '', 0),
-(64, 5, 20, '', 22421, '', '', 1, 'items', '', 'Umbral Master Crossbow', 1429878710, '', 0),
-(65, 5, 20, '', 22400, '', '', 1, 'items', '', 'Umbral Masterblade', 1429878866, '', 0),
-(66, 5, 20, '', 22415, '', '', 1, 'items', '', 'Umbral Master Hammer', 1429878941, '', 0),
-(67, 5, 20, '', 22418, '', '', 1, 'items', '', 'Umbral Master Bow', 1429879017, '', 0),
-(68, 5, 20, '', 22424, '', '', 1, 'items', '', 'Umbral Master Spellbook', 1429879103, '', 0),
-(69, 5, 20, '', 22403, '', '', 1, 'items', '', 'Umbral Master Slayer', 1429879158, '', 0),
-(70, 5, 20, '', 22406, '', '', 1, 'items', '', 'Umbral Master Axe', 1429879225, '', 0),
-(71, 4, 50, '', 0, '', 'Mage', 1, 'outfits', '', 'Mage Outfit', 1430279056, '', 0),
-(72, 4, 25, '', 0, '', 'Assassin', 1, 'outfits', '', 'Assassin Outfit', 1430279151, '', 0),
-(73, 4, 20, '', 0, '', 'Insectoid', 1, 'outfits', '', 'Insectoid Outfit', 1430279172, '', 0),
-(74, 5, 10, '', 2160, '', '', 100, 'items', '100 Cristal Coins. 1kk', 'Crystal Coins', 1430313846, '', 0),
-(75, 3, 25, '', 0, '24', '', 1, 'mounts', '', 'Shadow Draptor', 1430429837, '', 0),
-(76, 5, 15, '', 6132, '', '', 1, 'items', 'You see pair of soft boots that is brand-new. It weighs 8.00 oz.', 'Pair of Soft Boots', 1430586851, '', 0),
-(77, 5, 10, '', 21725, '', '', 1, 'items', 'You see a furious frock (Arm:12, magic level +2, protection fire +5%). It can only be wielded properly by sorcerers and druids of level 130 or higher.', 'Furious Frock', 1430587054, '', 0),
-(78, 5, 10, '', 8890, '', '', 1, 'items', 'You see a robe of the underworld (Arm:12, protection holy -12%, death +12%). It can only be wielded properly by sorcerers of level 100 or higher.', 'Robe of the Underworld', 1430587140, '', 0),
-(79, 5, 10, '', 12643, '', '', 1, 'items', 'You see a royal scale robe (Arm:12, magic level +2, protection fire +5%). It can only be wielded properly by sorcerers and druids of level 100 or higher.', 'Royal Scale Robe', 1430587193, '', 0),
-(80, 5, 12, '', 15407, '', '', 1, 'items', 'You see a depth lorica (Arm:16, distance fighting +3, protection death +5%). It can only be wielded properly by paladins of level 150 or higher.', 'Depth Lorica', 1430587285, '', 0),
-(81, 5, 10, '', 8888, '', '', 1, 'items', 'You see a master archers armor (Arm:15, distance fighting +3). It can only be wielded properly by paladins of level 100 or higher.', 'Master Archers Armor', 1430587388, '', 0),
-(82, 5, 10, '', 15406, '', '', 1, 'items', 'You see an ornate chestplate (Arm:16, shielding +3, protection physical +8%). It can only be wielded properly by knights of level 200 or higher.', 'Ornate Chestplate', 1430587442, '', 0),
-(83, 5, 10, '', 12642, '', '', 1, 'items', 'You see a royal draken mail (Arm:16, shielding +3, protection physical +5%). It can only be wielded properly by knights of level 100 or higher.', 'Royal Draken Mail', 1430587501, '', 0),
-(84, 5, 10, '', 8882, '', '', 1, 'items', 'You see an earthborn titan armor (Arm:15, axe fighting +2, protection earth +5%, fire -5%). It can only be wielded properly by knights of level 100 or higher.', 'Earthborn Titan Armor', 1430587563, '', 0),
-(85, 5, 10, '', 8883, '', '', 1, 'items', 'You see a windborn colossus armor (Arm:15, club fighting +2, protection energy +5%, earth -5%). It can only be wielded properly by knights of level 100 or higher.', 'Windborn Colossus Armor', 1430587612, '', 0),
-(86, 5, 10, '', 8881, '', '', 1, 'items', 'You see a fireborn giant armor (Arm:15, sword fighting +2, protection fire +5%, ice -5%). It can only be wielded properly by knights of level 100 or higher.', 'Fireborn Giant Armor', 1430587657, '', 0),
-(87, 5, 8, '', 2494, '', '', 1, 'items', 'You see a demon armor (Arm:16).', 'Demon Armor ', 1430587701, '', 0),
-(88, 5, 10, '', 15412, '', '', 1, 'items', 'You see an ornate legs (Arm:8, protection physical +5%). It can only be wielded properly by knights of level 185 or higher.', 'Ornate Legs', 1430587784, '', 0),
-(89, 5, 12, '', 15409, '', '', 1, 'items', 'You see a depth ocrea (Arm:8, protection manadrain +15%). It can only be wielded properly by sorcerers and druids.', 'Depth Ocrea', 1430587846, '', 0),
-(90, 5, 12, '', 15408, '', '', 1, 'items', 'You see a depth galea (Arm:8, protection drown +100%). It can only be wielded properly by players of level 150 or higher.', 'Depth Galea', 1430587958, '', 0),
-(91, 5, 20, '', 2471, '', '', 1, 'items', 'You see a golden helmet (Arm:12).', 'Golden Helmet', 1430588057, '', 0),
-(92, 5, 10, '', 12645, '', '', 1, 'items', 'You see an elite draken helmet (Arm:9, distance fighting +1, protection death +3%). It can only be wielded properly by paladins of level 100 or higher.', 'Elite Draken Helmet', 1430588107, '', 0),
-(93, 5, 10, '', 18390, '', '', 1, 'items', 'You see a wand of defiance (magic level +1). It can only be wielded properly by sorcerers of level 65 or higher.', 'Wand of Defiance', 1430588185, '', 0),
-(94, 5, 10, '', 18409, '', '', 1, 'items', 'You see a wand of everblazing (magic level +1). It can only be wielded properly by sorcerers of level 65 or higher.', 'Wand of Everblazing', 1430588228, '', 0),
-(95, 5, 10, '', 18412, '', '', 1, 'items', 'You see a glacial rod (magic level +1). It can only be wielded properly by druids of level 65 or higher.', 'Glacial Rod', 1430588296, '', 0),
-(96, 5, 20, '', 22412, '', '', 1, 'items', 'umbral master mace (Atk:52, Def:30 +3, club fighting +1). It can only be wielded properly by knights of level 250 or higher.', 'Umbral Master Mace', 1430588383, '', 0),
-(97, 5, 10, '', 18452, '', '', 1, 'items', 'You see a mycological mace (Atk:50, Def:31 +3, club fighting +1). It can only be wielded properly by players of level 120 or higher.', 'Mycological Mace', 1430588527, '', 0),
-(98, 5, 10, '', 8928, '', '', 1, 'items', 'You see an obsidian truncheon (Atk:50, Def:30 +2). It can only be wielded properly by players of level 100 or higher.', 'Obsidian Truncheon', 1430588585, '', 0),
-(99, 5, 10, '', 8924, '', '', 1, 'items', 'You see a hellforged axe (Atk:51, Def:28 +2). It can only be wielded properly by players of level 110 or higher.', 'Hellforged Axe', 1430588698, '', 0),
-(100, 5, 10, '', 8930, '', '', 1, 'items', 'You see an emerald sword (Atk:49, Def:33 +3). It can only be wielded properly by players of level 100 or higher.', 'Emerald Sword', 1430588749, '', 0),
-(101, 5, 12, '', 16111, '', '', 1, 'items', 'You see a thorn spitter (Range:6, Atk+9, Hit%+1). It can only be wielded properly by paladins of level 150 or higher.', 'Thorn Spitter', 1430589171, '', 0),
-(102, 5, 10, '', 8851, '', '', 1, 'items', 'You see a royal crossbow (Range:6, Atk+5, Hit%+3). It can only be wielded properly by paladins of level 130 or higher.', 'Royal Crossbow', 1430589219, '', 0),
-(103, 5, 10, '', 8854, '', '', 1, 'items', 'You see a warsinger bow (Range:7, Atk+3, Hit%+5). It can only be wielded properly by paladins of level 80 or higher.', 'Warsinger Bow', 1430589313, '', 0),
-(104, 5, 15, '', 2495, '', '', 1, 'items', 'You see a warsinger bow (Range:7, Atk+3, Hit%+5). It can only be wielded properly by paladins of level 80 or higher.', 'Demon Legs', 1430589364, '', 0),
-(105, 5, 25, '', 2646, '', '', 1, 'items', 'You see golden boots (Arm:4).', 'Golden Boots', 1430589418, '', 0),
-(106, 5, 10, '', 16112, '', '', 1, 'items', 'You see a spellbook of ancient arcana (Def:19, magic level +4, protection death +5%). It can only be wielded properly by sorcerers and druids of level 150 or higher.', 'spellbook of ancient arcana', 1430589457, '', 0),
-(107, 5, 12, '', 12644, '', '', 1, 'items', 'You see a shield of corruption (Def:36, sword fighting +3). It can only be wielded properly by knights of level 80 or higher.', 'Shield of Corruption', 1430589590, '', 0),
-(108, 5, 10, '', 8918, '', '', 1, 'items', 'You see a spellbook of dark mysteries (Def:16, magic level +3). It can only be wielded properly by sorcerers and druids of level 80 or higher. It weighs 28.50 oz. It shows your spells and can also shield against attack when worn.', 'Spellbook of Dark Mysteries', 1430589647, '', 0),
-(109, 5, 10, '', 6391, '', '', 1, 'items', 'You see a nightmare shield (Def:37). It weighs 32.00 oz. It was crafted by the ancient order of the nightmare knights.', 'Nightmare Shield', 1430589683, '', 0),
-(110, 5, 10, '', 6433, '', '', 1, 'items', 'You see a necromancer shield (Def:37). It weighs 32.00 oz. It is enchanted with unholy, necromantic powers.', 'Necromancer Shield', 1430589732, '', 0),
-(111, 5, 5, '', 2798, '', '', 10, 'items', '', '10x Blood Herb', 1430589821, '', 0),
-(112, 5, 20, '', 22409, '', '', 1, 'items', 'You see a umbral master chopper (Atk:54, Def:34, axe fighting +3). It can only be wielded properly by knights of level 250 or higher. It weighs 110.00 oz.', 'Umbral Master Chopper', 1430706015, '', 0),
-(113, 4, 25, '', 0, '', 'Summoner', 1, 'outfits', '', 'Summoner Outfit', 1430762396, '', 0),
-(114, 5, 10, '', 12544, '', '', 1, 'items', 'You see a max stamina. It weighs 3.00 oz. Deixa sua stamina full com apenas um click.', 'Max Stamina', 1430965461, '', 0),
-(116, 5, 10, '', 9778, '', '', 1, 'items', 'You see a yalahari mask (Arm:5, magic level +2). It can only be wielded properly by sorcerers and druids of level 80 or higher. It weighs 35.00 oz.', 'Yalahari Mask', 1433139590, '', 0),
-(117, 5, 15, '', 2504, '', '', 1, 'items', 'You see dwarven legs (Arm:7, protection physical +3%).', 'Dwaren Legs', 1433139714, '', 0),
-(118, 5, 45, '', 2358, '', '', 1, 'items', 'You see a max boots (faster regeneration and speed) (speed +20). It weighs 2.50 oz.', 'Max Boots', 1433452999, '', 0),
-(120, 4, 15, '', 0, '', 'Knight', 1, 'outfits', '', 'Knight Outfit', 1434045065, '', 0),
-(121, 4, 15, '', 0, '', 'Pirate', 1, 'outfits', '', 'Pirate Outfit', 1434045089, '', 0),
-(122, 4, 15, '', 0, '', 'Oriental', 1, 'outfits', '', 'Oriental Outfit', 1434045106, '', 0),
-(123, 4, 15, '', 0, '', 'Shaman', 1, 'outfits', '', 'Shaman Outfit', 1434045120, '', 0),
-(124, 4, 20, '', 0, '', 'Glooth Engineer', 1, 'outfits', '', 'Glooth Engineer Outfit', 1434045138, '', 0),
-(125, 4, 15, '', 0, '', 'Druid', 1, 'outfits', '', 'Druid Outfit', 1435857029, '', 0),
-(126, 4, 15, '', 0, '', 'Deepling', 1, 'outfits', '', 'Deepling Outfit', 1435857116, '', 0),
-(127, 4, 10, '', 0, '', 'Hunter', 1, 'outfits', '', 'Hunter Outfit', 1435857150, '', 0),
-(129, 4, 25, '', 0, '', 'Elementalist', 1, 'outfits', '', 'Elementalist Outfit', 1435857205, '', 0),
-(130, 4, 10, '', 0, '', 'Warmaster', 1, 'outfits', '', 'Warmaster Outfit', 1435857218, '', 0),
-(131, 4, 10, '', 0, '', 'Wayfarer', 1, 'outfits', '', 'Wayfarer Outfit', 1435857227, '', 0),
-(132, 4, 15, '', 0, '', 'Nightmare', 1, 'outfits', '', 'Nightmare Outfit', 1435857267, '', 0),
-(133, 4, 15, '', 0, '', 'Brotherhood', 1, 'outfits', '', 'Brotherhood Outfit', 1435857281, '', 0),
-(134, 4, 10, '', 0, '', 'Jester', 1, 'outfits', '', 'Jester Outfit', 1435857314, '', 0),
-(135, 4, 15, '', 0, '', 'Crystal Warlord', 1, 'outfits', '', 'Crystal Warlord Outfit', 1435857330, '', 0),
-(136, 4, 15, '', 0, '', 'Cave Explorer', 1, 'outfits', '', 'Cave Explorer Outfit', 1435857504, '', 0);
 
 -- --------------------------------------------------------
 
@@ -1033,18 +1109,6 @@ CREATE TABLE `z_shop_payment` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `z_shop_payment`
---
-
-INSERT INTO `z_shop_payment` (`id`, `ref`, `account_name`, `service_id`, `service_category_id`, `payment_method_id`, `price`, `points`, `status`, `date`, `gift`) VALUES
-(1580, '', '451994', 118, 5, 1, '', 45, 'received', 1467954803, 0),
-(1581, '', '451994', 118, 5, 1, '', 45, 'received', 1479226543, 0),
-(1582, '', '451994', 93, 5, 1, '', 10, 'received', 1479244664, 0),
-(1583, '', '451994', 74, 5, 1, '', 10, 'received', 1480198560, 0),
-(1584, '', '451994', 117, 5, 1, '', 15, 'received', 1480199128, 0),
-(1585, '', '451994', 8, 2, 1, '', 25, 'received', 1480199242, 0);
-
---
 -- Indexes for dumped tables
 --
 
@@ -1053,7 +1117,9 @@ INSERT INTO `z_shop_payment` (`id`, `ref`, `account_name`, `service_id`, `servic
 --
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD UNIQUE KEY `name` (`name`),
+  ADD UNIQUE KEY `name_2` (`name`),
+  ADD UNIQUE KEY `name_3` (`name`);
 
 --
 -- Indexes for table `account_bans`
@@ -1069,7 +1135,9 @@ ALTER TABLE `account_ban_history`
   ADD PRIMARY KEY (`id`),
   ADD KEY `account_id` (`account_id`),
   ADD KEY `banned_by` (`banned_by`),
-  ADD KEY `account_id_2` (`account_id`);
+  ADD KEY `account_id_2` (`account_id`),
+  ADD KEY `account_id_3` (`account_id`),
+  ADD KEY `account_id_4` (`account_id`);
 
 --
 -- Indexes for table `account_viplist`
@@ -1080,10 +1148,23 @@ ALTER TABLE `account_viplist`
   ADD KEY `player_id` (`player_id`);
 
 --
+-- Indexes for table `announcements`
+--
+ALTER TABLE `announcements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bot_reports`
+--
+ALTER TABLE `bot_reports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reported` (`reported`);
+
+--
 -- Indexes for table `global_storage`
 --
 ALTER TABLE `global_storage`
-  ADD UNIQUE KEY `key` (`key`,`world_id`);
+  ADD UNIQUE KEY `key` (`key`);
 
 --
 -- Indexes for table `guilds`
@@ -1174,10 +1255,12 @@ ALTER TABLE `market_offers`
   ADD KEY `player_id` (`player_id`);
 
 --
--- Indexes for table `newsticker`
+-- Indexes for table `pagseguro_transactions`
 --
-ALTER TABLE `newsticker`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `pagseguro_transactions`
+  ADD UNIQUE KEY `transaction_code` (`transaction_code`,`status`),
+  ADD KEY `name` (`name`),
+  ADD KEY `status` (`status`);
 
 --
 -- Indexes for table `players`
@@ -1209,6 +1292,13 @@ ALTER TABLE `player_depotitems`
   ADD UNIQUE KEY `player_id_2` (`player_id`,`sid`);
 
 --
+-- Indexes for table `player_former_names`
+--
+ALTER TABLE `player_former_names`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `player_id` (`player_id`);
+
+--
 -- Indexes for table `player_inboxitems`
 --
 ALTER TABLE `player_inboxitems`
@@ -1220,6 +1310,12 @@ ALTER TABLE `player_inboxitems`
 ALTER TABLE `player_items`
   ADD KEY `player_id` (`player_id`),
   ADD KEY `sid` (`sid`);
+
+--
+-- Indexes for table `player_kills`
+--
+ALTER TABLE `player_kills`
+  ADD KEY `player_id` (`player_id`);
 
 --
 -- Indexes for table `player_namelocks`
@@ -1265,11 +1361,41 @@ ALTER TABLE `tile_store`
   ADD KEY `house_id` (`house_id`);
 
 --
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `videos_categorias`
+--
+ALTER TABLE `videos_categorias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `videos_comentarios`
+--
+ALTER TABLE `videos_comentarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_changelog`
+--
+ALTER TABLE `z_changelog`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `z_forum`
 --
 ALTER TABLE `z_forum`
   ADD PRIMARY KEY (`id`),
   ADD KEY `section` (`section`);
+
+--
+-- Indexes for table `z_network_box`
+--
+ALTER TABLE `z_network_box`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `z_ots_comunication`
@@ -1278,9 +1404,33 @@ ALTER TABLE `z_ots_comunication`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `z_ots_guildcomunication`
+--
+ALTER TABLE `z_ots_guildcomunication`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `z_polls`
 --
 ALTER TABLE `z_polls`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_shopguild_history_item`
+--
+ALTER TABLE `z_shopguild_history_item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_shopguild_history_pacc`
+--
+ALTER TABLE `z_shopguild_history_pacc`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `z_shopguild_offer`
+--
+ALTER TABLE `z_shopguild_offer`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1296,9 +1446,9 @@ ALTER TABLE `z_shop_donates`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `z_shop_donate_confirm`
+-- Indexes for table `z_shop_history_item`
 --
-ALTER TABLE `z_shop_donate_confirm`
+ALTER TABLE `z_shop_history_item`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1321,17 +1471,27 @@ ALTER TABLE `z_shop_payment`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4386;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 --
 -- AUTO_INCREMENT for table `account_ban_history`
 --
 ALTER TABLE `account_ban_history`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `announcements`
+--
+ALTER TABLE `announcements`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `bot_reports`
+--
+ALTER TABLE `bot_reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `guilds`
 --
 ALTER TABLE `guilds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `guildwar_kills`
 --
@@ -1341,7 +1501,7 @@ ALTER TABLE `guildwar_kills`
 -- AUTO_INCREMENT for table `guild_ranks`
 --
 ALTER TABLE `guild_ranks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `guild_wars`
 --
@@ -1351,67 +1511,112 @@ ALTER TABLE `guild_wars`
 -- AUTO_INCREMENT for table `houses`
 --
 ALTER TABLE `houses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2506;
 --
 -- AUTO_INCREMENT for table `market_history`
 --
 ALTER TABLE `market_history`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `market_offers`
 --
 ALTER TABLE `market_offers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `newsticker`
---
-ALTER TABLE `newsticker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5775;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=215;
+--
+-- AUTO_INCREMENT for table `player_former_names`
+--
+ALTER TABLE `player_former_names`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `videos_categorias`
+--
+ALTER TABLE `videos_categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `videos_comentarios`
+--
+ALTER TABLE `videos_comentarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `z_changelog`
+--
+ALTER TABLE `z_changelog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `z_forum`
 --
 ALTER TABLE `z_forum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `z_network_box`
+--
+ALTER TABLE `z_network_box`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `z_ots_comunication`
 --
 ALTER TABLE `z_ots_comunication`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `z_ots_guildcomunication`
+--
+ALTER TABLE `z_ots_guildcomunication`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13382;
 --
 -- AUTO_INCREMENT for table `z_polls`
 --
 ALTER TABLE `z_polls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `z_shopguild_history_item`
+--
+ALTER TABLE `z_shopguild_history_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `z_shopguild_history_pacc`
+--
+ALTER TABLE `z_shopguild_history_pacc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `z_shopguild_offer`
+--
+ALTER TABLE `z_shopguild_offer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `z_shop_category`
 --
 ALTER TABLE `z_shop_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `z_shop_donates`
 --
 ALTER TABLE `z_shop_donates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=266;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `z_shop_donate_confirm`
+-- AUTO_INCREMENT for table `z_shop_history_item`
 --
-ALTER TABLE `z_shop_donate_confirm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+ALTER TABLE `z_shop_history_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `z_shop_offer`
 --
 ALTER TABLE `z_shop_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `z_shop_payment`
 --
 ALTER TABLE `z_shop_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1586;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -1428,7 +1633,9 @@ ALTER TABLE `account_bans`
 --
 ALTER TABLE `account_ban_history`
   ADD CONSTRAINT `account_ban_history_ibfk_2` FOREIGN KEY (`banned_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `account_ban_history_ibfk_3` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `account_ban_history_ibfk_3` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_ban_history_ibfk_4` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_ban_history_ibfk_5` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `account_viplist`
@@ -1436,6 +1643,12 @@ ALTER TABLE `account_ban_history`
 ALTER TABLE `account_viplist`
   ADD CONSTRAINT `account_viplist_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `account_viplist_ibfk_2` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `bot_reports`
+--
+ALTER TABLE `bot_reports`
+  ADD CONSTRAINT `bot_reports_ibfk_2` FOREIGN KEY (`reported`) REFERENCES `players` (`name`) ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `guilds`
@@ -1519,6 +1732,12 @@ ALTER TABLE `player_depotitems`
   ADD CONSTRAINT `player_depotitems_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
+-- Limitadores para a tabela `player_former_names`
+--
+ALTER TABLE `player_former_names`
+  ADD CONSTRAINT `player_former_names_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`);
+
+--
 -- Limitadores para a tabela `player_inboxitems`
 --
 ALTER TABLE `player_inboxitems`
@@ -1529,6 +1748,12 @@ ALTER TABLE `player_inboxitems`
 --
 ALTER TABLE `player_items`
   ADD CONSTRAINT `player_items_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `player_kills`
+--
+ALTER TABLE `player_kills`
+  ADD CONSTRAINT `player_kills_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `player_namelocks`
