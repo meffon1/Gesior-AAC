@@ -352,7 +352,6 @@ if(!defined('INITIALIZED'))
 											<div class="RightChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
   										</div>
 									</a>
-									<?php } ?>
 									<a href="?subtopic=downloadclient&step=downloadagreement">
   										<div id="submenu_downloadclient" class="Submenuitem" onmouseover="MouseOverSubmenuItem(this)" onmouseout="MouseOutSubmenuItem(this)">
 											<div class="LeftChain" style="background-image:url(<?php echo $layout_name; ?>/images/global/general/chain.gif);"></div>
