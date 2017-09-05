@@ -367,6 +367,20 @@ CREATE TABLE `pagseguro_transactions` (
 -- Estrutura da tabela `players`
 --
 
+
+--
+-- Estrutura da tabela `newsticker`
+--
+
+CREATE TABLE `newsticker` (
+  `id` int(11) NOT NULL,
+  `date` int(11) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `icon` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
 CREATE TABLE `players` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
