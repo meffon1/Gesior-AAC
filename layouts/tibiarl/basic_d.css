@@ -344,6 +344,103 @@ body {
 
 /** -------------------------------
  *  Stylesheet declarations for the
+ *  LOGINBOX and the DOWNLOADBOX
+ *  -------------------------------
+ */
+
+.SmallMenuBox {
+  position: relative;
+  left: 5px;
+  top: 8px;
+  width: 100%;
+  margin-bottom: 38px;
+  background-repeat: no-repeat;
+}
+
+.SmallMenuBox #LoginTop {
+  position: absolute;
+  left: -5px;
+  top: -12px;
+  height: 12px;
+  width: 180px;
+  background-repeat: no-repeat;
+}
+
+.SmallMenuBox #LoginBottom {
+  position: absolute;
+  top: 52px;
+  left: -5px;
+  height: 12px;
+  width: 180px;
+  background-repeat: no-repeat;
+}
+
+.SmallMenuBox .LoginBorder {
+  position: absolute;
+  top: 0px;
+  height: 52px;
+  width: 8px;
+  background-repeat: repeat-y;
+  z-index: 10;
+}
+
+.SmallMenuBox #BorderRight {
+  right: 9px;
+}
+
+.SmallMenuBox .Loginstatus {
+  position: relative;
+  top: 0px;
+  left: 5px;
+  height: 13px;
+  width: 160px;
+}
+
+.SmallMenuBox .LoginstatusText {
+  position: absolute;
+  top: 1px;
+  left: 18px;
+  width: 124px;
+  height: 11px;
+  cursor: pointer;
+}
+
+.SmallMenuBox #LoginstatusText_1 {
+  visibility: visible;
+}
+
+.SmallMenuBox #LoginstatusText_2 {
+  visibility: hidden;
+}
+
+.SmallMenuBox #LoginButtonContainer {
+  position: relative;
+  height: 39px;
+  width: 160px;
+  left: 5px;
+  background-repeat: repeat-y;
+  z-index: 1;
+}
+#PlayNowContainer {
+  position: absolute;
+  width: 150px;
+  height: 37px;
+  top: 1px;
+  left: 5px;
+  z-index: 99;
+}
+#PlayNowContainer form {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+.BigBoldText {
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+/** -------------------------------
+ *  Stylesheet declarations for the
  *  MENU
  *  -------------------------------
  */
