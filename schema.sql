@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Set-2017 às 21:10
+-- Generation Time: 05-Set-2017 às 20:15
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -272,6 +272,7 @@ CREATE TABLE `houses` (
   `beds` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
 --
 -- Estrutura da tabela `house_lists`
 --
@@ -348,27 +349,6 @@ CREATE TABLE `market_offers` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pagseguro_transactions`
---
-
-CREATE TABLE `pagseguro_transactions` (
-  `transaction_code` varchar(36) NOT NULL,
-  `name` varchar(200) DEFAULT NULL,
-  `payment_method` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `item_count` int(11) NOT NULL,
-  `data` datetime NOT NULL,
-  `payment_amount` float DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `players`
---
-
-
---
 -- Estrutura da tabela `newsticker`
 --
 
@@ -380,6 +360,25 @@ CREATE TABLE `newsticker` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pagseguro`
+--
+
+CREATE TABLE `pagseguro` (
+  `date` datetime NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `reference` varchar(200) NOT NULL,
+  `type` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `lastEventDate` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `players`
+--
 
 CREATE TABLE `players` (
   `id` int(11) NOT NULL,
@@ -613,6 +612,7 @@ CREATE TABLE `players_online` (
   `player_id` int(11) NOT NULL
 ) ENGINE=MEMORY DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `player_deaths`
@@ -752,9 +752,6 @@ CREATE TABLE `player_storage` (
   `value` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- --------------------------------------------------------
-
 --
 -- Estrutura da tabela `server_config`
 --
@@ -763,17 +760,6 @@ CREATE TABLE `server_config` (
   `config` varchar(50) NOT NULL,
   `value` varchar(256) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `server_config`
---
-
-INSERT INTO `server_config` (`config`, `value`) VALUES
-('motd_hash', '7371dbec94d303b6825d9c12cf6d83ffd43de433'),
-('motd_num', '3'),
-('players_record', '0');
-
--- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `store_history`
@@ -797,6 +783,7 @@ CREATE TABLE `tile_store` (
   `house_id` int(11) NOT NULL,
   `data` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 --
 -- Estrutura da tabela `videos`
@@ -851,8 +838,6 @@ CREATE TABLE `z_changelog` (
   `date` int(11) NOT NULL DEFAULT '0',
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `z_forum`
@@ -1269,14 +1254,6 @@ ALTER TABLE `market_offers`
   ADD KEY `player_id` (`player_id`);
 
 --
--- Indexes for table `pagseguro_transactions`
---
-ALTER TABLE `pagseguro_transactions`
-  ADD UNIQUE KEY `transaction_code` (`transaction_code`,`status`),
-  ADD KEY `name` (`name`),
-  ADD KEY `status` (`status`);
-
---
 -- Indexes for table `players`
 --
 ALTER TABLE `players`
@@ -1485,7 +1462,7 @@ ALTER TABLE `z_shop_payment`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `account_ban_history`
 --
@@ -1500,12 +1477,12 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `bot_reports`
 --
 ALTER TABLE `bot_reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `guilds`
 --
 ALTER TABLE `guilds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `guildwar_kills`
 --
@@ -1515,7 +1492,7 @@ ALTER TABLE `guildwar_kills`
 -- AUTO_INCREMENT for table `guild_ranks`
 --
 ALTER TABLE `guild_ranks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `guild_wars`
 --
@@ -1530,17 +1507,17 @@ ALTER TABLE `houses`
 -- AUTO_INCREMENT for table `market_history`
 --
 ALTER TABLE `market_history`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `market_offers`
 --
 ALTER TABLE `market_offers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=215;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `player_former_names`
 --
@@ -1565,12 +1542,12 @@ ALTER TABLE `videos_comentarios`
 -- AUTO_INCREMENT for table `z_changelog`
 --
 ALTER TABLE `z_changelog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `z_forum`
 --
 ALTER TABLE `z_forum`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `z_network_box`
 --
@@ -1605,7 +1582,7 @@ ALTER TABLE `z_shopguild_history_pacc`
 -- AUTO_INCREMENT for table `z_shopguild_offer`
 --
 ALTER TABLE `z_shopguild_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `z_shop_category`
 --
@@ -1620,7 +1597,7 @@ ALTER TABLE `z_shop_donates`
 -- AUTO_INCREMENT for table `z_shop_history_item`
 --
 ALTER TABLE `z_shop_history_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `z_shop_offer`
 --
