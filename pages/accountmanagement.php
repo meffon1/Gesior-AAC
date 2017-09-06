@@ -324,6 +324,7 @@ else
 																			
 																			';
 																	if($config['server']['freePremium'] == "no" || $account_logged->getPremDays() > 0)
+																		/*
 																		$main_content .= '
 																			<div style="font-size:1px;height:4px;"></div>
 																				<form action="?subtopic=buypoints" method="post" style="padding:0px;margin:0px;">
@@ -333,6 +334,7 @@ else
 																						</div>
 																					</div>
 																				</form>';
+																				*/
 																			$main_content .= '
 																				<div style="font-size:1px;height:4px;"></div>
 																				<form action="?subtopic=accountmanagement&action=logout" method="post" style="padding:0px;margin:0px;">
