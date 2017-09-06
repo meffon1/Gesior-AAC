@@ -3,6 +3,11 @@ if(!defined('INITIALIZED'))
 	exit;
 $getCasts = $SQL->query("SELECT * FROM `live_casts` ORDER BY `spectators` DESC")->fetchAll();
 $main_content .= '
+	
+	
+	<p>Currently our server has a unique Cast system.</p>
+	<p>You can watch our players just by clicking to enter the account without entering the account, let alone the password. A list of the players that are broadcasting will be shown, so choose one and click to enter. After entering the cast of the player, you can interact with him using Spectator Chat, a chat where you can talk to the player and other spectators.</p>
+	<p>If you are a player and want to broadcast your game, enter your character and use the command <strong>!cast</strong>, If you want to put a password in your cast type the command <strong>!cast password</strong>, The word "password" will be your cast password.</p>
 	<div class="TableContainer">
 		<div class="CaptionContainer">
 			<div class="CaptionInnerContainer"> 
@@ -57,11 +62,8 @@ $main_content .= '
 			</tbody>
 		</table>
 	</div>
-	
-	
-	<p>Currently our server has a unique Cast system.</p>
-	<p>You can watch our players just by clicking to enter the account without entering the account, let alone the password. A list of the players that are broadcasting will be shown, so choose one and click to enter. After entering the cast of the player, you can interact with him using Spectator Chat, a chat where you can talk to the player and other spectators.</p>
-	<p>If you are a player and want to broadcast your game, enter your character and use the command <strong>!cast</strong>, If you want to put a password in your cast type the command <strong>!cast password</strong>, The word "password" will be your cast password.</p>';
+	</br>
+';
 	
 $main_content .= '
 	<div class="TableContainer">
