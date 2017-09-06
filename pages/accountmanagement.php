@@ -285,7 +285,7 @@ else
 																			</span>
 																			<small>
 																				<br>The server is configured to free premium account , good game !<br>
-																				(Balance of tibia coins: '.(($account_logged->getPremiumPoints() > 0) ? '<font class="green">'.$account_logged->getPremiumPoints().'</font>' : '<font class="red">0</font>').' points)
+																				(Balance of tibia coins: '.(($account_logged->getPremiumPoints() > 0) ? '<font class="green">'.$account_logged->getPremiumPoints().'</font>' : '<font class="red">0</font>').')
 																			</small>
 																		</td>';
 																} else {
