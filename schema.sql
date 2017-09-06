@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Set-2017 às 18:55
+-- Generation Time: 06-Set-2017 às 19:12
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -68,7 +68,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `name`, `password`, `secret`, `type`, `premdays`, `coins`, `lastday`, `email`, `creation`, `vote`, `key`, `email_new`, `email_new_time`, `rlname`, `location`, `page_access`, `email_code`, `next_email`, `premium_points`, `create_date`, `create_ip`, `last_post`, `flag`, `vip_time`, `guild_points`, `guild_points_stats`, `passed`, `block`, `refresh`, `birth_date`, `gender`, `loyalty_points`, `authToken`) VALUES
-(1, '1', '060d38973b4ba4051fa6ca22f9acd4be7d1557fe', NULL, 1, 0, 0, 0, '', 0, 0, '0', '', 0, '', '', 9999, '', 0, 0, 0, 0, 0, 'unknown', 0, 0, 0, 0, 0, 0, '', '', 0, ''),
+(1, '1', '060d38973b4ba4051fa6ca22f9acd4be7d1557fe', NULL, 1, 0, 0, 0, '', 0, 0, '0', '', 0, '', '', 9999, '', 0, 0, 0, 0, 0, 'unknown', 0, 0, 0, 0, 0, 0, '', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -172,7 +172,6 @@ CREATE TABLE `guilds` (
   `logo_gfx_name` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 --
 -- Acionadores `guilds`
 --
@@ -226,13 +225,6 @@ CREATE TABLE `guild_membership` (
   `nick` varchar(15) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `guild_membership`
---
-
-INSERT INTO `guild_membership` (`player_id`, `guild_id`, `rank_id`, `nick`) VALUES
-(150, 1, 1, '');
-
 -- --------------------------------------------------------
 
 --
@@ -245,15 +237,6 @@ CREATE TABLE `guild_ranks` (
   `name` varchar(255) NOT NULL COMMENT 'rank name',
   `level` int(11) NOT NULL COMMENT 'rank level - leader, vice, member, maybe something else'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `guild_ranks`
---
-
-INSERT INTO `guild_ranks` (`id`, `guild_id`, `name`, `level`) VALUES
-(1, 1, 'the Leader', 3),
-(2, 1, 'a Vice-Leader', 2),
-(3, 1, 'a Member', 1);
 
 -- --------------------------------------------------------
 
@@ -1557,9 +1540,7 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `vocation`, `health`, `healthmax`, `experience`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `town_id`, `posx`, `posy`, `posz`, `conditions`, `cap`, `sex`, `lastlogin`, `lastip`, `save`, `skull`, `skulltime`, `lastlogout`, `blessings`, `blessings1`, `blessings2`, `blessings3`, `blessings4`, `blessings5`, `blessings6`, `blessings7`, `blessings8`, `onlinetime`, `deletion`, `balance`, `offlinetraining_time`, `offlinetraining_skill`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `deleted`, `description`, `comment`, `create_ip`, `create_date`, `hide_char`, `cast`, `skill_critical_hit_chance`, `skill_critical_hit_chance_tries`, `skill_critical_hit_damage`, `skill_critical_hit_damage_tries`, `skill_life_leech_chance`, `skill_life_leech_chance_tries`, `skill_life_leech_amount`, `skill_life_leech_amount_tries`, `skill_mana_leech_chance`, `skill_mana_leech_chance_tries`, `skill_mana_leech_amount`, `skill_mana_leech_amount_tries`, `skill_criticalhit_chance`, `skill_criticalhit_damage`, `skill_lifeleech_chance`, `skill_lifeleech_amount`, `skill_manaleech_chance`, `skill_manaleech_amount`, `prey_stamina_1`, `prey_stamina_2`, `prey_stamina_3`, `prey_column`, `bonus_reroll`, `xpboost_stamina`, `xpboost_value`, `marriage_status`, `hide_skills`, `hide_set`, `former`, `signature`, `marriage_spouse`, `loyalty_ranking`) VALUES
-(1, 'Rook Sample', 1, 1, 1, 0, 150, 150, 0, 106, 95, 78, 116, 128, 0, 0, 5, 5, 0, 0, 2, 32104, 32191, 6, '', 400, 0, 1407021967, 1793873073, 1, 0, 0, 1407021968, 0, 0, 0, 0, 0, 0, 0, 0, 0, 203, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0),
-(150, 'ADM Suporte', 5, 8, 160, 2, 940, 940, 65751800, 123, 118, 95, 9, 130, 0, 0, 4595, 4595, 200, 100, 2, 32344, 32218, 7, '', 1920, 1, 1495498634, 1684602555, 1, 0, 0, 1495498640, 63, 0, 0, 0, 0, 0, 0, 0, 0, 223426, 0, 1215801, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 71, 0, 0, '', '', 2147483647, 1472930428, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7200, 7200, 0, 1, 0, 0, 0, 0, NULL, NULL, '-', '', -1, 0),
-(153, 'Erick Nunes', 1, 9, 8, 2, 150, 150, 4200, 123, 118, 95, 9, 130, 0, 0, 3, 5, 6, 0, 2, 32347, 32219, 7, '', 400, 1, 1494264897, 16777343, 1, 0, 0, 1494264914, 63, 0, 0, 0, 0, 0, 0, 0, 0, 1977, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 1493218372, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7200, 7200, 0, 1, 0, 0, 0, 0, NULL, NULL, '-', '', -1, 0);
+(1, 'Rook Sample', 1, 1, 1, 0, 150, 150, 0, 106, 95, 78, 116, 128, 0, 0, 5, 5, 0, 0, 2, 32104, 32191, 6, '', 400, 0, 1407021967, 1793873073, 1, 0, 0, 1407021968, 0, 0, 0, 0, 0, 0, 0, 0, 0, 203, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0);
 
 -- --------------------------------------------------------
 
@@ -1570,13 +1551,6 @@ INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `vocatio
 CREATE TABLE `players_online` (
   `player_id` int(11) NOT NULL
 ) ENGINE=MEMORY DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `players_online`
---
-
-INSERT INTO `players_online` (`player_id`) VALUES
-(150);
 
 -- --------------------------------------------------------
 
@@ -1640,46 +1614,6 @@ CREATE TABLE `player_items` (
   `count` smallint(5) NOT NULL DEFAULT '0',
   `attributes` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `player_items`
---
-
-INSERT INTO `player_items` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `attributes`) VALUES
-(153, 1, 101, 2461, 1, ''),
-(153, 2, 102, 2661, 1, ''),
-(153, 3, 103, 5926, 1, ''),
-(153, 4, 104, 2651, 1, ''),
-(153, 5, 105, 2175, 1, ''),
-(153, 6, 106, 23721, 1, ''),
-(153, 7, 107, 2649, 1, ''),
-(153, 8, 108, 2643, 1, ''),
-(153, 11, 109, 26052, 1, ''),
-(153, 103, 110, 1988, 1, ''),
-(153, 103, 111, 2661, 1, ''),
-(153, 103, 112, 2643, 1, ''),
-(153, 103, 113, 2468, 1, ''),
-(153, 103, 114, 8820, 1, ''),
-(153, 103, 115, 8819, 1, ''),
-(153, 103, 116, 2182, 1, ''),
-(153, 103, 117, 2175, 1, ''),
-(153, 103, 118, 8704, 21, 0x0f15),
-(153, 103, 119, 2554, 1, ''),
-(153, 103, 120, 2120, 1, ''),
-(153, 110, 121, 7620, 1, 0x0f01),
-(153, 110, 122, 2120, 1, ''),
-(150, 1, 101, 2461, 1, ''),
-(150, 3, 102, 1988, 1, ''),
-(150, 4, 103, 2651, 1, ''),
-(150, 5, 104, 2175, 1, ''),
-(150, 6, 105, 23721, 1, ''),
-(150, 7, 106, 2649, 1, ''),
-(150, 8, 107, 2643, 1, ''),
-(150, 11, 108, 26052, 1, ''),
-(150, 102, 109, 7620, 27, 0x0f1b),
-(150, 102, 110, 8704, 21, 0x0f15),
-(150, 102, 111, 2120, 1, ''),
-(150, 102, 112, 22421, 1, '');
 
 -- --------------------------------------------------------
 
@@ -1825,51 +1759,6 @@ CREATE TABLE `player_storage` (
   `key` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `value` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `player_storage`
---
-
-INSERT INTO `player_storage` (`player_id`, `key`, `value`) VALUES
-(150, 4687, 1),
-(150, 10030, 1),
-(150, 10031, 1),
-(150, 10034, 1),
-(150, 10035, 1),
-(150, 10038, 1),
-(150, 10039, 1),
-(150, 10042, 1),
-(150, 10043, 1),
-(150, 50722, 0),
-(150, 99963, 1),
-(150, 99964, 1),
-(150, 99965, 1),
-(150, 99966, 1),
-(150, 99969, 1),
-(150, 99970, 1),
-(150, 5042021, 1495498638),
-(150, 8420390, 24926153),
-(150, 8420391, 0),
-(150, 8420392, 0),
-(150, 10002011, 1),
-(153, 4687, 1),
-(153, 10030, 1),
-(153, 10031, 1),
-(153, 10034, 1),
-(153, 10035, 1),
-(153, 10038, 1),
-(153, 10039, 1),
-(153, 10042, 1),
-(153, 10043, 1),
-(153, 18870, 1),
-(153, 50463, 1),
-(153, 50464, 1),
-(153, 50465, 1),
-(153, 50466, 1),
-(153, 50722, 0),
-(153, 8420390, 0),
-(153, 8420391, 0),
-(153, 8420392, 0);
 
 -- --------------------------------------------------------
 
