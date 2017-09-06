@@ -55,7 +55,7 @@ if($logged) {
 							</div>
 							<div class="SingleStepContainer"> 
 								<img class="StepIcon" src="'.$layout_name.'/images/global/content/progressbar/progress-bar-icon-2-'.(($step >= 3) ? 'green' : 'blue').'.gif">
-								<div class="StepText" style="font-weight: '.(($step == 3) ? 'bold' : 'normal').';">Choose Points Package</div>
+								<div class="StepText" style="font-weight: '.(($step == 3) ? 'bold' : 'normal').';">Choose Tibia Coins Package</div>
 							</div>
 						</div>
 						<div class="Steps" style="width: 25%;">
@@ -132,13 +132,13 @@ if($logged) {
 												<tr>
 													<td>We inform the players and staff that '.$config['server']['serverName'].' has no financial interest. All income is obtained directly reapplied for server maintenance - this means that to make a donation, you are ensuring the stability and increasing quality.</br>
 														</br>
-														The points that are given to the players that perform the donations represent nothing beyond our gratification, that is, you are not buying points but getting a symbolic gratification (in form of points) that will benefit you in the game; you can use your points any way you want.</br>
+														The tibia coins that are given to the players that perform the donations represent nothing beyond our gratification, that is, you are not buying Tibia Coins but getting a symbolic gratification (in form of Tibia Coins) that will benefit you in the game; you can use your Tibia Coins any way you want.</br>
 														No refund amount of donations for all is applied to the monthly expenses.</br>
-														The spirit of this system is simple: in order to approach the players and make you feel at home, we understand your donations as a two-way street in the question credibility. To believe that it is worth investing in server maintenance, we focus on you by crediting them with points, which as stated previously, can be used in the way best fits them.</br>
+														The spirit of this system is simple: in order to approach the players and make you feel at home, we understand your donations as a two-way street in the question credibility. To believe that it is worth investing in server maintenance, we focus on you by crediting them with Tibia Coins, which as stated previously, can be used in the way best fits them.</br>
 														</br>
-														Check out <a href="?subtopic=accountmanagement&action=manage#Products+Available">'.$config['server']['serverName'].' Shop</a> and see how you can make your points in the most profitable way to your situation.</br>
+														Check out <a href="?subtopic=accountmanagement&action=manage#Products+Available">'.$config['server']['serverName'].' Shop</a> and see how you can make your Tibia Coins in the most profitable way to your situation.</br>
 														<h3>Frequently Asked question</h3>
-														<b>But what are Premium Points ?</b> Premium Points is part of our donation system, with them you can purchase a VIP or something else that is available in the Shopping Online.</br>
+														<b>But what are tibia coins ?</b> Tibia coins is part of our donation system, with them you can purchase a VIP or something else that is available in the Shopping Online.</br>
 														</br>
 														If you accept our terms of donation and understand the purpose of it, click <strong>"Next"</strong>.</td>
 												</tr>
@@ -208,7 +208,7 @@ if($logged) {
 															<tr>
 																<td><input type="radio" name="donateMethod" value="pagseguro" '.(($_REQUEST['donateMethod'] == "pagseguro") ? 'checked' : '').'></td>
 																<td class="LabelV">PagSeguro</td>
-																<td>This method doesn\'t require confirmation. Points are credited to your account automatically.</td>
+																<td>This method doesn\'t require confirmation. Tibia Coins are credited to your account automatically.</td>
 															</tr>														
 														</table>
 													</div>
@@ -810,27 +810,27 @@ if($logged) {
 															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																<tr bgcolor="'.$config['site']['darkborder'].'">
 																	<td class="LabelV">Donation Price</td>
-																	<td class="LabelV">Amount Points</td>
+																	<td class="LabelV">Amount Tibia Coins</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['lightborder'].'">
 																	<td>R$ 5,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>5 points</strike> = <font color="green">10 points</font>' : '5 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>5 Tibia Coins</strike> = <font color="green">10 Tibia Coins</font>' : '5 Tibia Coins').'</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['darkborder'].'">
 																	<td>R$ 10,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>10 points</strike> = <font color="green">20 points</font>' : '10 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>10 Tibia Coins</strike> = <font color="green">20 Tibia Coins</font>' : '10 Tibia Coins').'</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['lightborder'].'">
 																	<td>R$ 20,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>20 points</strike> = <font color="green">40 points</font>' : '20 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>20 Tibia Coins</strike> = <font color="green">40 Tibia Coins</font>' : '20 Tibia Coins').'</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['darkborder'].'">
 																	<td>R$ 40,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>40 points</strike> = <font color="green">80 points</font>' : '40 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>40 Tibia Coins</strike> = <font color="green">80 Tibia Coins</font>' : '40 Tibia Coins').'</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['lightborder'].'">
 																	<td>R$ 60,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>60 points</strike> = <font color="green">120 points</font>' : '60 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>60 Tibia Coins</strike> = <font color="green">120 Tibia Coins</font>' : '60 Tibia Coins').'</td>
 																</tr>														
 															</table>
 														</div>
@@ -859,7 +859,7 @@ if($logged) {
 									<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
 									<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
 									<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
-									<div class="Text" >Choose Points Package</div>
+									<div class="Text" >Choose Tibia Coins Package</div>
 									<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span> 
 									<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
 									<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
@@ -879,28 +879,28 @@ if($logged) {
 														<div class="TableContentContainer" >
 															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																<tr>
-																	<td class="LabelV">Points Package</td>
+																	<td class="LabelV">Tibia Coins Package</td>
 																	<td>
 																		<select name="pointsPackage">
-																			<option value="5" '.(($_REQUEST['pointsPackage'] == 5) ? 'selected' : '').'>5 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="10" '.(($_REQUEST['pointsPackage'] == 10) ? 'selected' : '').'>10 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="15" '.(($_REQUEST['pointsPackage'] == 15) ? 'selected' : '').'>15 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="20" '.(($_REQUEST['pointsPackage'] == 20) ? 'selected' : '').'>20 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="25" '.(($_REQUEST['pointsPackage'] == 25) ? 'selected' : '').'>25 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="30" '.(($_REQUEST['pointsPackage'] == 30) ? 'selected' : '').'>30 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="35" '.(($_REQUEST['pointsPackage'] == 35) ? 'selected' : '').'>35 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="40" '.(($_REQUEST['pointsPackage'] == 40) ? 'selected' : '').'>40 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="45" '.(($_REQUEST['pointsPackage'] == 45) ? 'selected' : '').'>45 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="50" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>50 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="60" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>60 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="70" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>70 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="80" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>80 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="90" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>90 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="100" '.(($_REQUEST['pointsPackage'] == 100) ? 'selected' : '').'>100 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="150" '.(($_REQUEST['pointsPackage'] == 150) ? 'selected' : '').'>150 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="200" '.(($_REQUEST['pointsPackage'] == 200) ? 'selected' : '').'>200 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="250" '.(($_REQUEST['pointsPackage'] == 250) ? 'selected' : '').'>250 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="300" '.(($_REQUEST['pointsPackage'] == 300) ? 'selected' : '').'>300 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="5" '.(($_REQUEST['pointsPackage'] == 5) ? 'selected' : '').'>5 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="10" '.(($_REQUEST['pointsPackage'] == 10) ? 'selected' : '').'>10 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="15" '.(($_REQUEST['pointsPackage'] == 15) ? 'selected' : '').'>15 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="20" '.(($_REQUEST['pointsPackage'] == 20) ? 'selected' : '').'>20 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="25" '.(($_REQUEST['pointsPackage'] == 25) ? 'selected' : '').'>25 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="30" '.(($_REQUEST['pointsPackage'] == 30) ? 'selected' : '').'>30 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="35" '.(($_REQUEST['pointsPackage'] == 35) ? 'selected' : '').'>35 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="40" '.(($_REQUEST['pointsPackage'] == 40) ? 'selected' : '').'>40 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="45" '.(($_REQUEST['pointsPackage'] == 45) ? 'selected' : '').'>45 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="50" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>50 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="60" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>60 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="70" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>70 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="80" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>80 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="90" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>90 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="100" '.(($_REQUEST['pointsPackage'] == 100) ? 'selected' : '').'>100 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="150" '.(($_REQUEST['pointsPackage'] == 150) ? 'selected' : '').'>150 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="200" '.(($_REQUEST['pointsPackage'] == 200) ? 'selected' : '').'>200 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="250" '.(($_REQUEST['pointsPackage'] == 250) ? 'selected' : '').'>250 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="300" '.(($_REQUEST['pointsPackage'] == 300) ? 'selected' : '').'>300 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
 																		</select>
 																	</td>
 																</tr>										
@@ -970,7 +970,7 @@ if($logged) {
 									<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
 									<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
 									<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
-									<div class="Text" >Points Package</div>
+									<div class="Text" >Tibia Coins Package</div>
 									<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span> 
 									<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
 									<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
@@ -991,27 +991,27 @@ if($logged) {
 															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																<tr bgcolor="'.$config['site']['darkborder'].'">
 																	<td class="LabelV">Donation Price</td>
-																	<td class="LabelV">Amount Points</td>
+																	<td class="LabelV">Amount Tibia Coins</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['lightborder'].'">
 																	<td>R$ 5,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>5 points</strike> = <font color="green">10 points</font>' : '5 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>5 Tibia Coins</strike> = <font color="green">10 Tibia Coins</font>' : '5 Tibia Coins').'</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['darkborder'].'">
 																	<td>R$ 10,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>10 points</strike> = <font color="green">20 points</font>' : '10 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>10 Tibia Coins</strike> = <font color="green">20 Tibia Coins</font>' : '10 Tibia Coins').'</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['lightborder'].'">
 																	<td>R$ 20,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>20 points</strike> = <font color="green">40 points</font>' : '20 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>20 Tibia Coins</strike> = <font color="green">40 Tibia Coins</font>' : '20 Tibia Coins').'</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['darkborder'].'">
 																	<td>R$ 40,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>40 points</strike> = <font color="green">80 points</font>' : '40 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>40 Tibia Coins</strike> = <font color="green">80 Tibia Coins</font>' : '40 Tibia Coins').'</td>
 																</tr>
 																<tr bgcolor="'.$config['site']['lightborder'].'">
 																	<td>R$ 60,00</td>
-																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>60 points</strike> = <font color="green">120 points</font>' : '60 points').'</td>
+																	<td>'.(($doubleStatus['value'] == "active") ? '<strike>60 Tibia Coins</strike> = <font color="green">120 Tibia Coins</font>' : '60 Tibia Coins').'</td>
 																</tr>														
 															</table>
 														</div>
@@ -1100,7 +1100,7 @@ if($logged) {
 									<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
 									<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
 									<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span>
-									<div class="Text" >Choose Points Package</div>
+									<div class="Text" >Choose Tibia Coins Package</div>
 									<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span> 
 									<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span> 
 									<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span> 
@@ -1120,28 +1120,28 @@ if($logged) {
 														<div class="TableContentContainer" >
 															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																<tr>
-																	<td class="LabelV">Points Package</td>
+																	<td class="LabelV">Tibia Coins Package</td>
 																	<td>
 																		<select name="pointsPackage">
-																			<option value="5" '.(($_REQUEST['pointsPackage'] == 5) ? 'selected' : '').'>5 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="10" '.(($_REQUEST['pointsPackage'] == 10) ? 'selected' : '').'>10 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="15" '.(($_REQUEST['pointsPackage'] == 15) ? 'selected' : '').'>15 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="20" '.(($_REQUEST['pointsPackage'] == 20) ? 'selected' : '').'>20 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="25" '.(($_REQUEST['pointsPackage'] == 25) ? 'selected' : '').'>25 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="30" '.(($_REQUEST['pointsPackage'] == 30) ? 'selected' : '').'>30 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="35" '.(($_REQUEST['pointsPackage'] == 35) ? 'selected' : '').'>35 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="40" '.(($_REQUEST['pointsPackage'] == 40) ? 'selected' : '').'>40 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="45" '.(($_REQUEST['pointsPackage'] == 45) ? 'selected' : '').'>45 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="50" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>50 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="60" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>60 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="70" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>70 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="80" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>80 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="90" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>90 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="100" '.(($_REQUEST['pointsPackage'] == 100) ? 'selected' : '').'>100 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="150" '.(($_REQUEST['pointsPackage'] == 150) ? 'selected' : '').'>150 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="200" '.(($_REQUEST['pointsPackage'] == 200) ? 'selected' : '').'>200 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="250" '.(($_REQUEST['pointsPackage'] == 250) ? 'selected' : '').'>250 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
-																			<option value="300" '.(($_REQUEST['pointsPackage'] == 300) ? 'selected' : '').'>300 Points '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="5" '.(($_REQUEST['pointsPackage'] == 5) ? 'selected' : '').'>5 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="10" '.(($_REQUEST['pointsPackage'] == 10) ? 'selected' : '').'>10 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="15" '.(($_REQUEST['pointsPackage'] == 15) ? 'selected' : '').'>15 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="20" '.(($_REQUEST['pointsPackage'] == 20) ? 'selected' : '').'>20 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="25" '.(($_REQUEST['pointsPackage'] == 25) ? 'selected' : '').'>25 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="30" '.(($_REQUEST['pointsPackage'] == 30) ? 'selected' : '').'>30 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="35" '.(($_REQUEST['pointsPackage'] == 35) ? 'selected' : '').'>35 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="40" '.(($_REQUEST['pointsPackage'] == 40) ? 'selected' : '').'>40 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="45" '.(($_REQUEST['pointsPackage'] == 45) ? 'selected' : '').'>45 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="50" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>50 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="60" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>60 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="70" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>70 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="80" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>80 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="90" '.(($_REQUEST['pointsPackage'] == 50) ? 'selected' : '').'>90 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="100" '.(($_REQUEST['pointsPackage'] == 100) ? 'selected' : '').'>100 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="150" '.(($_REQUEST['pointsPackage'] == 150) ? 'selected' : '').'>150 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="200" '.(($_REQUEST['pointsPackage'] == 200) ? 'selected' : '').'>200 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="250" '.(($_REQUEST['pointsPackage'] == 250) ? 'selected' : '').'>250 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
+																			<option value="300" '.(($_REQUEST['pointsPackage'] == 300) ? 'selected' : '').'>300 Tibia Coins '.(($doubleStatus['value'] == "active") ? '(2x)' : '').'</option>
 																		</select>
 																	</td>
 																</tr>										
@@ -1231,7 +1231,7 @@ if($logged) {
 															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																<tr>
 																	<td class="LabelV" width="30%">Order</td>
-																	<td>'.$config['pagseguro']['offers'][$_POST['ServiceID']].' Premium Points</td>
+																	<td>'.$config['pagseguro']['offers'][$_POST['ServiceID']].' Tibia Coins</td>
 																</tr>
 																<tr>
 																	<td class="LabelV" width="30%">Donation Amount</td>
@@ -1340,7 +1340,7 @@ if($logged) {
 															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																<tr>
 																	<td class="LabelV" width="30%">Order</td>
-																	<td>'.$donateValue.' Premium Points</td>
+																	<td>'.$donateValue.' Tibia Coins</td>
 																</tr>										
 															</table>
 														</div>
@@ -1503,7 +1503,7 @@ if($logged) {
 															<table class="TableContent" width="100%"  style="border:1px solid #faf0d7;" >
 																<tr>
 																	<td class="LabelV" width="30%">Order</td>
-																	<td>'.$donateValue.' Premium Points</td>
+																	<td>'.$donateValue.' Tibia Coins</td>
 																</tr>										
 															</table>
 														</div>
@@ -1707,7 +1707,7 @@ if($logged) {
 						<div class="LeftButton" >
 							<input type="hidden" name="cmd" value="_xclick">
 							<input type="hidden" name="business" value="'. $config['paypal']['email']. '">
-							<input type="hidden" name="item_name" value="' . $donatePoints . ' Premium Points">
+							<input type="hidden" name="item_name" value="' . $donatePoints . ' Tibia Coins">
 							<input type="hidden" name="custom" value="'.$refString.'-'.$account_logged->getName().'">
 							<input type="hidden" name="amount" value="'.$donatePrice.'">
 							<input type="hidden" name="currency_code" value="BRL">
