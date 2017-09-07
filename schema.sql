@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Set-2017 às 19:12
+-- Generation Time: 07-Set-2017 às 20:17
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gesior`
+-- Database: `gesior-aac`
 --
 
 -- --------------------------------------------------------
@@ -1428,6 +1428,22 @@ CREATE TABLE `pagseguro` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `pagseguro_transactions`
+--
+
+CREATE TABLE `pagseguro_transactions` (
+  `transaction_code` varchar(36) NOT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  `payment_method` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `item_count` int(11) NOT NULL,
+  `data` datetime NOT NULL,
+  `payment_amount` float DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `players`
 --
 
@@ -1583,6 +1599,19 @@ CREATE TABLE `player_depotitems` (
   `itemtype` smallint(6) NOT NULL,
   `count` smallint(5) NOT NULL DEFAULT '0',
   `attributes` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `player_former_names`
+--
+
+CREATE TABLE `player_former_names` (
+  `id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `former_name` varchar(35) NOT NULL,
+  `date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -2248,6 +2277,14 @@ ALTER TABLE `market_offers`
   ADD KEY `player_id` (`player_id`);
 
 --
+-- Indexes for table `pagseguro_transactions`
+--
+ALTER TABLE `pagseguro_transactions`
+  ADD UNIQUE KEY `transaction_code` (`transaction_code`,`status`),
+  ADD KEY `name` (`name`),
+  ADD KEY `status` (`status`);
+
+--
 -- Indexes for table `players`
 --
 ALTER TABLE `players`
@@ -2275,6 +2312,13 @@ ALTER TABLE `player_deaths`
 --
 ALTER TABLE `player_depotitems`
   ADD UNIQUE KEY `player_id_2` (`player_id`,`sid`);
+
+--
+-- Indexes for table `player_former_names`
+--
+ALTER TABLE `player_former_names`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `player_id` (`player_id`);
 
 --
 -- Indexes for table `player_inboxitems`
@@ -2465,6 +2509,11 @@ ALTER TABLE `market_offers`
 --
 ALTER TABLE `players`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+--
+-- AUTO_INCREMENT for table `player_former_names`
+--
+ALTER TABLE `player_former_names`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sellchar`
 --
