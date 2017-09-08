@@ -135,7 +135,7 @@ $config['pagseguro']['offers'] = array(
 // Nome do produto
 $config['pagseguro']['produtoNome'] = 'Tibia Coins';
 
-$config['pagseguro']['urlRedirect'] =  'https://127.0.0.1/?subtopic=buypoints&action=realizado';
+$config['pagseguro']['urlRedirect'] =  'https://127.0.0.1/';
 $config['pagseguro']['urlNotification'] = 'http://127.0.0.1/retpagseguro.php';
 
 # Layout Config
