@@ -698,7 +698,7 @@ if($logged)
 																$main_content .= '
 																	<tr bgcolor="'.$bgcolor.'">
 																		<td>'.date("M d Y, G:i:s", $order['date']).'</td>
-																		<td>'.$order['points'].' Premium Points</td>
+																		<td>'.$order['points'].' Tibia Coins</td>
 																		<td>'.$order['price'].' BRL</td>
 																		<td>'.$order['method'].'</td>';
 																		$bankref = explode("-",$order['reference']);
@@ -1534,7 +1534,7 @@ if($logged)
 					$account_points = new Account();
 					$account_points->loadByName($orderAccount);
 	
-					$account_points->setPremiumPoints($account_points->getPremiumPoints() + $orderPoints);
+					$account_points->setPoints($account_points->getPoints() + $orderPoints);
 					$account_points->setLoyalty($account_points->getLoyalty() + $loyaltyPoints);
 					$account_points->save();
 					
@@ -1848,7 +1848,7 @@ if($logged)
 												</td>
 											</tr>
 											<tr>
-												<td>*Extra services have their prices on premium points.</td>
+												<td>*Extra services have their prices on tibia coins.</td>
 											</tr>
 										</table>
 									</div>
@@ -2409,14 +2409,14 @@ if($logged)
 							<tbody>
 								<tr>
 									<td><img src="'.$layout_name.'/images/global/content/headline-bracer-left.gif"></td>
-									<td style="text-align:center;vertical-align:middle;horizontal-align:center;font-size:17px;font-weight:bold;">Manage your premium points packages</td>
+									<td style="text-align:center;vertical-align:middle;horizontal-align:center;font-size:17px;font-weight:bold;">Manage your tibia coins packages</td>
 									<td><img src="'.$layout_name.'/images/global/content/headline-bracer-right.gif"></td>
 								</tr>
 							</tbody>
 						</table>
 					</center>
 					<br>';
-				$main_content .= '<p>You must add a package of premium points for your player can buy products in your shop.</p>';
+				$main_content .= '<p>You must add a package of tibia coins for your player can buy products in your shop.</p>';
 				$main_content .= '
 					<div class="msgStatusSuccess" style="text-align:center;color:green; padding: 5px; background:#c2f4b2; border:1px solid #165303;margin-bottom:15px;display:none;"></div>
 					<div class="msgStatusError" style="text-align:center;color:red; padding: 5px; background:#e59d9d; border:1px solid red;margin-bottom:15px;display:none;"></div>
@@ -2427,7 +2427,7 @@ if($logged)
 								<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
 								<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 								<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span>
-								<div class="Text">Adding new package of premium points</div>
+								<div class="Text">Adding new package of tibia coins</div>
 								<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span> 
 								<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 								<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
@@ -2505,7 +2505,7 @@ if($logged)
 								<span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 
 								<span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 								<span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span>
-								<div class="Text">Premium points list sale</div>
+								<div class="Text">Tibia Coins list sale</div>
 								<span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);"></span> 
 								<span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);"></span> 
 								<span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);"></span> 

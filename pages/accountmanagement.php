@@ -314,7 +314,7 @@ if($config['server']['freePremium'] == "yes") {
 																	if($config['server']['freePremium'] == "no" || $account_logged->getPremDays() > 0)
 																		$main_content .= '
 																			<div style="font-size:1px;height:4px;"></div>
-																				<form action="?subtopic=donate" method="post" style="padding:0px;margin:0px;">
+																				<form action="?subtopic=accountmanagement&action=donate" method="post" style="padding:0px;margin:0px;">
 																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)">
 																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);"></div>
 																							<input class="ButtonText" type="image" name="Get Coins" alt="Get Coins" src="'.$layout_name.'/images/global/buttons/_sbutton_gettibiacoins.gif">
@@ -364,7 +364,7 @@ if($config['server']['freePremium'] == "yes") {
 					</tbody>
 				</table>
 			</div>
-			<br>';
+			<br/>';
 			//REGISTRAR
 			$account_reckey = $account_logged->getCustomField("key");
 			if(empty($account_reckey))
@@ -942,9 +942,7 @@ if($config['server']['freePremium'] == "yes") {
 						</div>
 					</td>
 				</tr>
-				<br/>
 				<br/>';
-		/*
 		$main_content .= '
 			<a name="Loyalty+Highscore+Character" ></a>
 				<div class="TopButtonContainer" >
@@ -1023,10 +1021,7 @@ if($config['server']['freePremium'] == "yes") {
 					</tr>
 				</table>
 			</div>
-				<br>
-				<br>';
-			*/
-		
+				<br/>';		
 		$main_content .= '
 			<a name="Donates" ></a>
 			<div class="TopButtonContainer" >
@@ -1150,9 +1145,7 @@ if($config['server']['freePremium'] == "yes") {
 					</div>
 				</td>
 			</tr>
-			<br/>
 			<br/>';
-		/*
 		$main_content .= '
 			<a name="Products+Available" ></a>
 			<div class="TopButtonContainer" >
@@ -1229,9 +1222,7 @@ if($config['server']['freePremium'] == "yes") {
 					</div>
 				</td>
 			</tr>
-			<br/>
 			<br/>';
-		*/
 		$main_content .= '
 			<a name="Products+Ready+To+Use" ></a>
 			<div class="TopButtonContainer" >
@@ -1327,7 +1318,6 @@ if($config['server']['freePremium'] == "yes") {
 					</div>
 				</td>
 			</tr>
-			<br/>
 			<br/>';		
 			#history of products bought
 			$main_content .= '
@@ -1437,8 +1427,7 @@ if($config['server']['freePremium'] == "yes") {
 						</div>
 					</td>
 				</tr>
-				</br>
-				</br>';
+				<br/>';
 		//Real life data
 		$main_content .= '
 			<a name="Registration" ></a>
@@ -1482,7 +1471,7 @@ if($config['server']['freePremium'] == "yes") {
 															<td class="LabelV" >Location:</td>
 															<td width=80%>'.$account_logged->getRLName().'<br/>
 																'.$account_logged->getLocation().' <br/>';
-														/*$main_content .= '
+														$main_content .= '
 															<td rowspan="2" style="vertical-align:top;horizontal-align:right;padding-right:0px;" ><table border="0" cellspacing="0" cellpadding="0" >
 																	<form action="?subtopic=accountmanagement&page=changeregistration" method="post" >
 																		<tr>
@@ -1496,7 +1485,6 @@ if($config['server']['freePremium'] == "yes") {
 																	</form>
 																</table>
 															</td>';
-															*/
 													$main_content .= '
 														</tr>
 														<tr>
