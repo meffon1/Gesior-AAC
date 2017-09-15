@@ -189,7 +189,7 @@ if(!$logged)
 																		<div style="margin-left: 10px;" >
 																			<p>... where hardcore gaming meets fantasy.</p>
 																			<p>... where friendships last a lifetime.</p>
-																			<p>... unites adventurers since 1997!</p>
+																			<p>... unites adventurers since 2017!</p>
 																		</div>
 																	</div>
 														</table>
@@ -285,7 +285,7 @@ else
 																			</span>
 																			<small>
 																				<br>The server is configured to free premium account , good game !<br>
-																				(Balance of tibia coins: '.(($account_logged->getPremiumPoints() > 0) ? '<font class="green">'.$account_logged->getPremiumPoints().'</font>' : '<font class="red">0</font>').')
+																				(Balance of Tibia Coins: '.(($account_logged->getCoins() > 0) ? '<font class="green">'.$account_logged->getCoins().'</font>' : '<font class="red">0</font>').')
 																			</small>
 																		</td>';
 																} else {
@@ -310,21 +310,27 @@ else
 																						<input class="ButtonText" type="image" name="Manage Account" alt="Manage Account" src="'.$layout_name.'/images/global/buttons/_sbutton_manageaccount.gif">
 																					</div>
 																				</div>
-																			</form>
-																			';
-																	if($config['server']['freePremium'] == "no" || $account_logged->getPremDays() > 0)
-																		
-																		$main_content .= '
-																				<div style="font-size:1px;height:4px;"></div>
-																				<form action="?subtopic=accountmanagement&action=donate" method="post" style="padding:0px;margin:0px;">
-																				<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)">
-																					<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);">
-																						</div>
-																						<input class="ButtonText" type="image" name="Get Coins" alt="Get Coins" src="'.$layout_name.'/images/global/buttons/_sbutton_gettibiacoins.gif">
-																					</div>
-																				</div>
 																			</form>';
-																				
+																			if($group_id_of_acc_logged >= $config['site']['access_admin_panel']) {
+																	$main_content .= '
+																			<div style="font-size:1px;height:4px;"></div>
+																				<form action="?subtopic=adminpanel" method="post" style="padding:0px;margin:0px;">
+																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)">
+																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);"></div>
+																							<input class="ButtonText" type="image" name="Logout" alt="Logout" src="'.$layout_name.'/images/global/buttons/_sbutton_painel.gif">
+																						</div>
+																					</div>
+																				</form>';
+																	if($config['server']['freePremium'] == "no" || $account_logged->getPremDays() > 0)
+																		$main_content .= '
+																			<div style="font-size:1px;height:4px;"></div>
+																				<form action="?subtopic=accountmanagement&action=donate" method="post" style="padding:0px;margin:0px;">
+																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)">
+																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);"></div>
+																							<input class="ButtonText" type="image" name="Get Coins" alt="Get Coins" src="'.$layout_name.'/images/global/buttons/_sbutton_gettibiacoins.gif">
+																						</div>
+																					</div>
+																				</form>';
 																			$main_content .= '
 																				<div style="font-size:1px;height:4px;"></div>
 																				<form action="?subtopic=accountmanagement&action=logout" method="post" style="padding:0px;margin:0px;">
@@ -334,19 +340,8 @@ else
 																						</div>
 																					</div>
 																				</form>';
-																		if($group_id_of_acc_logged >= $config['site']['access_admin_panel']) {
-																			$main_content .= '
-																				<div style="font-size:1px;height:4px;"></div>
-																				<form action="?subtopic=adminpanel" method="post" style="padding:0px;margin:0px;">
-																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)">
-																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);"></div>
-																							<input class="ButtonText" type="image" name="Logout" alt="Logout" src="'.$layout_name.'/images/global/buttons/_sbutton_painel.gif">
-																						</div>
-																					</div>
-																				</form>';
 																		}
 																		$main_content .= '
-																			
 																			</td>
 																		</tr>
 																	</tbody>
@@ -435,7 +430,7 @@ else
 												<div style="font-size:1px;height:4px;" ></div>
 											</div>
 											<p><b>'.$getTransfer[0].' donate'.(($getTransfer[0] >= 2) ? 's' : '').' pending of confirmation!</b></p>
-											<p>You bought premium points in our shop using or donate system, but need to confirm your donation. Click "Confirm" to see which donate is pending confirmation.</p>
+											<p>You bought Tibia Coins in our shop using or donate system, but need to confirm your donation. Click "Confirm" to see which donate is pending confirmation.</p>
 										</td>
 									<tr>
 								</table>
@@ -475,7 +470,7 @@ else
 												<div style="font-size:1px;height:4px;" ></div>
 											</div>
 											<p><b>'.$getTransferAdmin[0].' donate'.(($getTransfer[0] >= 2) ? 's' : '').' confirmed!</b></p>
-											<p>You have some donate confirmations. Confirm and give the premium points to the player.</p>
+											<p>You have some donate confirmations. Confirm and give the Tibia Coins to the player.</p>
 										</td>
 									<tr>
 								</table>
@@ -584,18 +579,20 @@ else
 																				<td style="width:40px;text-align:center;padding:2px;">
 																					<span id="CharacterNumberOf_'.$player_number_counter.'" style="display: '.$displayNum.';">'.$player_number_counter.'.</span>
 																					<span id="PlayButtonOf_'.$player_number_counter.'" style="display: '.$display.';">
-																						<span name="FlashClientPlayButton" id="FlashClientPlayButton" playlink="?subtopic=play&name=' . htmlspecialchars($account_player->getName()) . '" ' . $preview . '>';
+																						<!--<span name="FlashClientPlayButton" id="FlashClientPlayButton" playlink="?subtopic=play&name=' . htmlspecialchars($account_player->getName()) . '" ' . $preview . '> -->';
 																						
 																						if($account_player->isDeleted())
-																							{
-																								$main_content .= '<img style="border:0px;" src="'.$layout_name.'/images/account/play-not-button.gif">';
-																							} else {
-																								$main_content .= '
-																									<img style="border:0px;" onmouseover="InMiniButton(this, &#39;&#39;);" onmouseout="OutMiniButton(this, &#39;&#39;);" src="'.$layout_name.'/images/account/play-button.gif">';
-																							}
+																						{
+																							$main_content .= '<img style="border:0px;" src="'.$layout_name.'/images/account/play-not-button.gif">';
+																						} else if(!$config['site']['flash_client_enabled']){
+                                                                                            $main_content .= '<img style="border:0px;" alt="Flash client disabled" src="'.$layout_name.'/images/account/play-button-disabled.gif">';
+                                                                                        } else {
+																							$main_content .= '
+																								<img style="border:0px;" onmouseover="InMiniButton(this, &#39;&#39;);" onmouseout="OutMiniButton(this, &#39;&#39;);" src="'.$layout_name.'/images/account/play-button.gif">';
+																						}
 																							
 																						$main_content .='
-																						</span>
+																						<!-- </span> -->
 																					</span>
 																				</td>
 																				<td id="CharacterCell2_'.$player_number_counter.'">
@@ -609,14 +606,16 @@ else
 																				</td>
 																				<td id="CharacterCell3_'.$player_number_counter.'">';
 																					if($account_player->isDeleted())
-																						$main_content .= 'deleted';
+																						$main_content .= '<font class="red">Deleted</font>';
 																					else {
 																						if($account_player->isOnline() && $account_player->isHidden())
-																							$main_content .= 'hidden, <font class="green"><b>online</b></font>';
+																							$main_content .= 'hidden, <font class="green"><b>Online</b></font>';
 																						elseif($account_player->isOnline())
-																							$main_content .= '<font class="green"><b>online</b></font>';
+																							$main_content .= '<font class="green"><b>Online</b></font>';
 																						elseif($account_player->isHidden())
 																							$main_content .= 'hidden';
+																						else
+																						    $main_content .= '<font class="red">Offline</font>';
 																					}		
 																				$main_content .='
 																				</td>
@@ -837,28 +836,27 @@ else
 														$main_content .= '
 															<td>
 																<b><font class="green">Premium Account</font></b><br>
-																<small>(The server is configured to free premium account, good game!)</small>
 															</td>';
 													} else {
 														$main_content .= '
 															<td>'.$account_status.'<br>
+																<small>(Premium Time expires at Dec&#160;20&#160;2014,&#160;21:50:32&#160;CET)</small>
 															</td>';
 													}
 													$main_content .= '
 														</tr>
 														<tr style="background-color:#F1E0C6;" >
 															<td class="LabelV" >Tibia Coins:</td>
-															<td>'.$account_logged->getPremiumPoints().' tibia coins<br>';
+															<td>'.$account_logged->getCoins().' Tibia Coins<br>';
 															$accname = $account_logged->getName();
-														$sql_points = "SELECT * FROM `z_shop_donates` WHERE `account_name` = '$accname' AND `status` = 'received' ORDER BY `date` DESC LIMIT 1";
+															//INSERT INTO `pagseguro_transactions`(`transaction_code`, `name`, `payment_method`, `status`, `item_count`, `data`, `payment_amount`)
+														$sql_points = "SELECT * FROM `pagseguro_transactions` WHERE `name` = '$accname' AND `status` = 'PAID' ORDER BY `data` DESC LIMIT 1";
 														$last_points_bought = $SQL->query($sql_points)->fetch();
-														if($SQL->query($sql_points)->fetchColumn() > 0) {
+														if($last_points_bought) {
 															$getServiceInfo = $SQL->query("SELECT `count` FROM `z_shop_offer` WHERE `id` = '".$last_points_bought['service_id']."'")->fetch();
 															$main_content .= '
-																<small>(Your last purchase of tibia coins was on '.date("M d Y",$last_points_bought['date']).'. You bought '.$last_points_bought['points'].' premium points.)</small>';
+																<small>(Your last donation was on '.date("M d Y",strtotime($last_points_bought['data'])).'. You donated to get '.$last_points_bought['item_count'].' Tibia Coins.)</small>';
 														} else
-															$main_content .= '
-																<small>(You have not bought tibia coins yet. <a href="?subtopic=accountmanagement&action=donate" title="Buy now!">Buy now!</a>)</small>';
 														$main_content .= '
 															</td>
 														</tr>';
@@ -946,7 +944,7 @@ else
 				</tr>
 				<br/>
 				<br/>';
-		
+		/*
 		$main_content .= '
 			<a name="Loyalty+Highscore+Character" ></a>
 				<div class="TopButtonContainer" >
@@ -1027,7 +1025,7 @@ else
 			</div>
 				<br>
 				<br>';
-			
+			*/
 		
 		$main_content .= '
 			<a name="Donates" ></a>
@@ -1090,7 +1088,7 @@ else
 																							</span></span><br/>
 																Your donations are an incentive for us always bring the best.<br/>
 																<ul>
-																	<li>Your donations will be reversed in premium points.</li>
+																	<li>Your donations will be reversed in Tibia Coins.</li>
 																	<li>Note that some types of donations need to be confirmed. Will be listed below the outstanding donations that needs confirmation.</li>
 																</ul>
 															</td>
@@ -1154,7 +1152,7 @@ else
 			</tr>
 			<br/>
 			<br/>';
-		
+		/*
 		$main_content .= '
 			<a name="Products+Available" ></a>
 			<div class="TopButtonContainer" >
@@ -1233,7 +1231,7 @@ else
 			</tr>
 			<br/>
 			<br/>';
-		
+		*/
 		$main_content .= '
 			<a name="Products+Ready+To+Use" ></a>
 			<div class="TopButtonContainer" >
@@ -1439,7 +1437,8 @@ else
 						</div>
 					</td>
 				</tr>
-				<br/>';
+				</br>
+				</br>';
 		//Real life data
 		$main_content .= '
 			<a name="Registration" ></a>
@@ -1528,7 +1527,7 @@ else
 														</tr>';												
 												}													
 												
-												$main_content .= '		
+												$main_content .= '
 													</table>
 												</div>
 											</div>
@@ -2840,7 +2839,6 @@ else
 							</div>
 						</div>
 					</div>
-				</div>
 				</div>';
 			if(!isset($_REQUEST['step']))
 			{
@@ -2964,7 +2962,8 @@ else
 					</table>
 				</td>
 			</tr>
-		</table>';
+		</table>
+		</div>';
 			}
 			elseif($_REQUEST['step'] == 2)
 			{
@@ -3073,7 +3072,8 @@ else
 									</table>
 								</td>
 							</tr>
-						</table>';
+						</table>
+						</div>';
 					
 				}else{
 					header("Location: ?subtopic=accountmanagement&action=manage");
@@ -3171,7 +3171,8 @@ else
 									</tr>
 								</form>
 							</table>
-						</center>';
+						</center>
+						</div>';
 					else die();
 					
 				}else{
@@ -3938,7 +3939,7 @@ else
 															</td>
 														</tr>
 														<tr>
-															<td>After confirmed your donation our team will be up to 24 hours to credit your premium points.</td>
+															<td>After confirmed your donation our team will be up to 24 hours to credit your Tibia Coins.</td>
 														</tr>
 													</table>
 												</div>
@@ -4020,7 +4021,7 @@ else
 															$main_content .= '
 																<tr bgcolor="'.$bgcolor.'">
 																	<td>'.date("M d Y",$doHistory['date']).'</td>
-																	<td>'.$doHistory['points'].' Premium Points</td>
+																	<td>'.$doHistory['points'].' Tibia Coins</td>
 																	<td>'.$doHistory['price'].' BRL</td>
 																	<td>'.$doHistory['method'].'</td>';
 																$bankref = explode("-",$doHistory['reference']);
@@ -4402,7 +4403,7 @@ function NameStateChanged()
 				$main_content .= 'Please choose a name';
 				if(count($config['site']['newchar_vocations']) > 1)
 					$main_content .= ', vocation';
-				$main_content .= ' and sex for your character. <br/>In any case the name must not violate the naming conventions stated in the <a href="?subtopic=tibiarules" target="_blank" >'.htmlspecialchars($config['server']['serverName']).' Rules</a>, or your character might get deleted or name locked.';
+				$main_content .= ' and sex for your character. <br/>In any case the name must not violate the naming conventions stated in the <a href="?subtopic=malverarules" target="_blank" >'.htmlspecialchars($config['server']['serverName']).' Rules</a>, or your character might get deleted or name locked.';
 				if($account_logged->getPlayersList()->count() >= $config['site']['max_players_per_account'])
 					$main_content .= '<b><font color="red"> You have maximum number of characters per account on your account. Delete one before you make new.</font></b>';
 				$main_content .= '<br/><br/><form action="?subtopic=accountmanagement&action=createcharacter" method="post" ><input type="hidden" name=savecharacter value="1" ><div class="TableContainer" >  <table class="Table3" cellpadding="0" cellspacing="0" >    <div class="CaptionContainer" >      <div class="CaptionInnerContainer" ><span class="CaptionEdgeLeftTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span><span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span><span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span><span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span><div class="Text" >Create Character</div>        <span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span><span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span><span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span><span class="CaptionEdgeRightBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span></div>    </div><tr>      <td>        <div class="InnerTableContainer" >          <table style="width:100%;" ><tr><td><div class="TableShadowContainerRightTop" >  <div class="TableShadowRightTop" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rt.gif);" ></div></div><div class="TableContentAndRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rm.gif);" >  <div class="TableContentContainer" ><table class="TableContent" width="100%" ><tr class="LabelH" ><td style="width:50%;" ><span >Name</td><td><span >Sex</td></tr><tr class="Odd" ><td><input id="newcharname" name="newcharname" onkeyup="checkName();" value="'.htmlspecialchars($newchar_name).'" size="30" maxlength="29" ><BR><font size="1" face="verdana,arial,helvetica"><div id="name_check">Please enter your character name.</div></font></td><td>';
@@ -4541,7 +4542,7 @@ function NameStateChanged()
 					$main_content .= 'Please choose a name';
 					if(count($config['site']['newchar_vocations']) > 1)
 						$main_content .= ', vocation';
-					$main_content .= ' and sex for your character. <br/>In any case the name must not violate the naming conventions stated in the <a href="?subtopic=tibiarules" target="_blank" >'.$config['server']['serverName'].' Rules</a>, or your character might get deleted or name locked.<br/><br/><form action="?subtopic=accountmanagement&action=createcharacter" method="post" ><input type="hidden" name=savecharacter value="1" ><div class="TableContainer" >  <table class="Table3" cellpadding="0" cellspacing="0" >    <div class="CaptionContainer" >      <div class="CaptionInnerContainer" ><span class="CaptionEdgeLeftTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span><span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span><span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span><span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span><div class="Text" >Create Character</div>        <span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span><span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span><span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span><span class="CaptionEdgeRightBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span></div>    </div><tr>      <td>        <div class="InnerTableContainer" >          <table style="width:100%;" ><tr><td><div class="TableShadowContainerRightTop" >  <div class="TableShadowRightTop" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rt.gif);" ></div></div><div class="TableContentAndRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rm.gif);" >  <div class="TableContentContainer" ><table class="TableContent" width="100%" ><tr class="LabelH" ><td style="width:50%;" ><span >Name</td><td><span >Sex</td></tr><tr class="Odd" ><td><input id="newcharname" name="newcharname" onkeyup="checkName();" value="'.$newchar_name.'" size="30" maxlength="29" ><BR><font size="1" face="verdana,arial,helvetica"><div id="name_check">Please enter your character name.</div></font></td><td>';
+					$main_content .= ' and sex for your character. <br/>In any case the name must not violate the naming conventions stated in the <a href="?subtopic=malverarules" target="_blank" >'.$config['server']['serverName'].' Rules</a>, or your character might get deleted or name locked.<br/><br/><form action="?subtopic=accountmanagement&action=createcharacter" method="post" ><input type="hidden" name=savecharacter value="1" ><div class="TableContainer" >  <table class="Table3" cellpadding="0" cellspacing="0" >    <div class="CaptionContainer" >      <div class="CaptionInnerContainer" ><span class="CaptionEdgeLeftTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span><span class="CaptionEdgeRightTop" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span><span class="CaptionBorderTop" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span><span class="CaptionVerticalLeft" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span><div class="Text" >Create Character</div>        <span class="CaptionVerticalRight" style="background-image:url('.$layout_name.'/images/global/content/box-frame-vertical.gif);" /></span><span class="CaptionBorderBottom" style="background-image:url('.$layout_name.'/images/global/content/table-headline-border.gif);" ></span><span class="CaptionEdgeLeftBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span><span class="CaptionEdgeRightBottom" style="background-image:url('.$layout_name.'/images/global/content/box-frame-edge.gif);" /></span></div>    </div><tr>      <td>        <div class="InnerTableContainer" >          <table style="width:100%;" ><tr><td><div class="TableShadowContainerRightTop" >  <div class="TableShadowRightTop" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rt.gif);" ></div></div><div class="TableContentAndRightShadow" style="background-image:url('.$layout_name.'/images/global/content/table-shadow-rm.gif);" >  <div class="TableContentContainer" ><table class="TableContent" width="100%" ><tr class="LabelH" ><td style="width:50%;" ><span >Name</td><td><span >Sex</td></tr><tr class="Odd" ><td><input id="newcharname" name="newcharname" onkeyup="checkName();" value="'.$newchar_name.'" size="30" maxlength="29" ><BR><font size="1" face="verdana,arial,helvetica"><div id="name_check">Please enter your character name.</div></font></td><td>';
 					$main_content .= '<input type="radio" name="newcharsex" value="1" ';
 					if($newchar_sex == 1)
 						$main_content .= 'checked="checked" ';
