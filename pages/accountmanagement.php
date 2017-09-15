@@ -276,7 +276,7 @@ else
 															<table class="TableContent" width="100%" style="border:1px solid #faf0d7;">
 																<tbody>
 																	<tr>';
-																if($config['server']['freePremium'] == "yes") {
+if($config['server']['freePremium'] == "yes") {
 																	$main_content .= '
 																		<td><img class="AccountStatusImage" src="'.$layout_name.'/images/account/account-status_green.gif" alt="free account"></td>
 																		<td width="100%" valign="middle">
@@ -311,20 +311,10 @@ else
 																					</div>
 																				</div>
 																			</form>';
-																			if($group_id_of_acc_logged >= $config['site']['access_admin_panel']) {
-																	$main_content .= '
-																			<div style="font-size:1px;height:4px;"></div>
-																				<form action="?subtopic=adminpanel" method="post" style="padding:0px;margin:0px;">
-																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)">
-																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);"></div>
-																							<input class="ButtonText" type="image" name="Logout" alt="Logout" src="'.$layout_name.'/images/global/buttons/_sbutton_painel.gif">
-																						</div>
-																					</div>
-																				</form>';
 																	if($config['server']['freePremium'] == "no" || $account_logged->getPremDays() > 0)
 																		$main_content .= '
 																			<div style="font-size:1px;height:4px;"></div>
-																				<form action="?subtopic=accountmanagement&action=donate" method="post" style="padding:0px;margin:0px;">
+																				<form action="?subtopic=donate" method="post" style="padding:0px;margin:0px;">
 																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)">
 																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);"></div>
 																							<input class="ButtonText" type="image" name="Get Coins" alt="Get Coins" src="'.$layout_name.'/images/global/buttons/_sbutton_gettibiacoins.gif">
@@ -337,6 +327,16 @@ else
 																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_red.gif)">
 																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_red_over.gif);"></div>
 																							<input class="ButtonText" type="image" name="Logout" alt="Logout" src="'.$layout_name.'/images/global/buttons/_sbutton_logout.gif">
+																						</div>
+																					</div>
+																				</form>';
+																		if($group_id_of_acc_logged >= $config['site']['access_admin_panel']) {
+																			$main_content .= '
+																				<div style="font-size:1px;height:4px;"></div>
+																				<form action="?subtopic=adminpanel" method="post" style="padding:0px;margin:0px;">
+																					<div class="BigButton" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green.gif)">
+																						<div onmouseover="MouseOverBigButton(this);" onmouseout="MouseOutBigButton(this);"><div class="BigButtonOver" style="background-image:url('.$layout_name.'/images/global/buttons/sbutton_green_over.gif);"></div>
+																							<input class="ButtonText" type="image" name="Logout" alt="Logout" src="'.$layout_name.'/images/global/buttons/_sbutton_painel.gif">
 																						</div>
 																					</div>
 																				</form>';
