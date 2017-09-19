@@ -81,7 +81,7 @@ $skills = new Highscores($id, 100, $page, $vocation);
 							<TD WIDTH=15% CLASS=white ><B>Level</B></TD>';
 					if($list == "experience")
 						$main_content .= '
-							<TD WIDTH=20% CLASS=white ><B>Points</B></TD>';
+							<TD WIDTH=20% CLASS=white ><B>Experience</B></TD>';
 					$main_content .= '
 						</TR>';
 				$number_of_rows = 0;
